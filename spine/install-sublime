@@ -1,0 +1,4 @@
+echo Press ENTER to install Sublime Text \
+&& read && echo enter user password to install... \
+&& pamac build sublime-text-nightly --no-confirm \
+&& cat ~/.scripts/spine/dconf-gnome-favorites.ini | dconf load /org/gnome/shell/

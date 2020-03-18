@@ -1,0 +1,9 @@
+subl3_check() {
+        if hash subl3 2>/dev/null ; then
+                subl3 $HOME/.config/sublime-text-3/Cheat\ sheet\ -\ BEGINNERS\ GUIDE.md
+        else
+            	gedit $HOME/.config/sublime-text-3/Cheat\ sheet\ -\ BEGINNERS\ GUIDE.md
+        fi
+}
+
+subl3_check

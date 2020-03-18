@@ -1,0 +1,9 @@
+#!/bin/bash
+cd $HOME
+cat $HOME/.scripts/spine/gen_wordsmith_profile >> .tmp.start.gen.wordsmith.project \
+&& cat $HOME/.scripts/spine/gen_wordsmith_bootstrap >> .tmp.start.gen.wordsmith.project \
+&& chmod 755 .tmp.start.gen.wordsmith.project \
+&& $HOME/.tmp.start.gen.wordsmith.project \
+&& rm $HOME/.tmp.start.gen.wordsmith.project
+
+exit 0

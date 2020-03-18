@@ -1,0 +1,16 @@
+#!/bin/bash
+echo Enter the name of the project youd like to work on \-\-\ \n
+echo DO NOT USE SPACES ... USE hyphen -  or underscore _ \
+&& read -r TITLE && echo "$TITLE" | sed 's/ /\\ /g' \
+&& echo "$TITLE" \
+&& sed -i.bak 's,TITLE=.*,TITLE=\"'"$TITLE"'\",' "$HOME/.scripts/spine/gen_wordsmith_profile" \
+&& DOS_DIR=$(echo "$TITLE" | tr -d '[:space:]' | tr -d '[=_=]' | tr -d '[=-=]' | cut -c -7 | sed "s/[a-z]/\U&/g") \
+&& sed -i.bak "s/DOS_DIR=.*/DOS_DIR=$DOS_DIR/g" $HOME/.scripts/spine/gen_wordsmith_profile \
+&& start-gen-wordsmith-project \
+&& source $HOME/.scripts/spine/gen_wordsmith_profile \
+&& cp $HOME/.scripts/spine/Session.sublime_session $HOME/.config/sublime-text-3/Local \
+&& sed -i.bak 's,path.*,path\"\: \"'"$MANU_DIR"'\",' "$HOME/.config/sublime-text-3/Local/Session.sublime_session" \
+&& echo --=== [ New Project Name is Set to $TITLE ]===-- \
+&& echo --=== [ Found at $MANU_DIR ] ===-- \
+&& echo --=== [ Dont forget to add $MANU_DIR to Sublime Text as a Project Directory ] ===- \
+&& read

@@ -1,0 +1,17 @@
+# Generate 'PDF' using wordsmith
+############################################################################################
+# Config project @ $HOME/.config/your-personal-scripts/gen_wordsmith_profile not HERE!
+#Nothing should change here except bug fixesesese
+
+# Entering $MANU_DIR for WORK!!!!
+echo " -== [ GENERATING PDF ] ==- "
+
+cd $MANU_DIR
+
+wordsmith g odt \
+&& cp $MANU_DIR/final/$MANUSCRIPT/$MANUSCRIPT.odt $MANU_DIR/final/$MANUSCRIPT.odt \
+&& wordsmith g pdf \
+&& echo "Moving $MANUSCRIPT.pdf to $SYNC_ROOT/WIPs/$MANUSCRIPT/pdfs...." \
+&& mv $MANU_DIR/final/$MANUSCRIPT.pdf $SYNC_ROOT/WIPs/$MANUSCRIPT/pdfs/$TITLE-$DATE.pdf \
+&& echo "--== Finished! $MANUSCRIPT.pdf moved to $SYNC_ROOT/WIPs/$MANUSCRIPT/pdfs ==--"
+
