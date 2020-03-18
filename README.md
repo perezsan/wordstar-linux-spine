@@ -3,7 +3,7 @@ Wordstar Linux's Manjaro Linux Frontend and group of scripts that integrates Sub
 Sublime Text's frontend with wordsmith / pandoc ebook/pdf generation.
 Possibly some other crap not mentioned, too!
 
-**Requires Pyhton3 and tk (tcl/tk.)**
+**Requires Python3 and tk (tcl/tk.)**
 
 extract to dir in your $PATH, then run Spine.py
 
