@@ -4,6 +4,8 @@ Sublime Text's frontend with wordsmith / pandoc ebook/pdf generation.
 Possibly some other crap not mentioned, too!
 
 **Requires Python3 and tk (tcl/tk.)**
+**and Ruby / rubygem**
+**And a Sublime Text 3 distro-specific install if not using Manjaro/arch**
 
 extract spine dir (I recommend ~/.config/spine), then add its location to your $PATH , then run Spine.py.
 
