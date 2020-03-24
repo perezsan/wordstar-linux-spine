@@ -1,4 +1,0 @@
-#!/bin/bash
-gnome-terminal -- $HOME/.scripts/spine/wsl-set-current-project
-
-exit 0
