@@ -1,5 +1,0 @@
-#!/bin/bash
-REVIVE_INTERFACE=$(source $HOME/.active.interface)
-sudo iptables -I OUTPUT -o $REVIVE_INTERFACE -j ACCEPT \
-&& echo "Internet back up on $REVIVE_INTERFACE" \
-&& rm $HOME/.active.interface
