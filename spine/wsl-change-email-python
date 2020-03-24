@@ -1,0 +1,9 @@
+#!/bin/bash
+echo "-== [ Author\'s Email ] ==-" \
+&& echo "$EMAIL" | sed 's/ /\\ /g' \
+&& echo "$EMAIL" \
+&& sed -i.bak 's,EMAIL=.*,EMAIL=\"'"$EMAIL"'\",' "$SPINE_DIR/reticulation/gen_wordsmith_profile"
+
+
+
+exit 0

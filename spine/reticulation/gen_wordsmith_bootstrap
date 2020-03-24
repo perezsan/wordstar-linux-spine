@@ -1,0 +1,57 @@
+#!/bin/bash
+# Bootstrap variables for generating wordsmith documents 
+# DO NOT EDIT unless you know what you're doing
+# User variables are configured by editing gen_wordsmith_profile
+
+# check if project exists, if not, generate 'wordsmith n $TITLE'
+echo "Checking if Wordsmith project DIR for your fabulous manuscript, $TITLE, even exists..."
+
+if [ ! -d "$MANU_DIR/assets" ]; then
+    echo "Wordsmith project '$FORMAT-$Manuscript' does not exist . . . \
+    Creating the fucking thing"; \
+    git config --global user.email "$EMAIL" \
+    && git config --global user.name "$GITUSERNAME"; \
+    mkdir -p $SYNC_ROOT/$FORMAT; \
+    cd $SYNC_ROOT/$FORMAT; \
+    wordsmith n "$MANUSCRIPT" \
+    && cp "$ASSET_DIR/README.md" "$MANU_DIR/README.md" \
+    && touch "$MANU_DIR/$DOS_DIR-outline.md" \
+    && cd "$MANU_DIR" && wordsmith g epub \
+    && echo "$AUTHOR" \
+    && sed -i.bak 's/title:.*/title:    '"$TITLE"'/g' "$MANU_DIR/.wordsmith" \
+    && sed -i.bak 's/author:.*/author:    '"$AUTHOR"'/g' "$MANU_DIR/.wordsmith" \
+    && rm -rf final/* 
+    mkdir -p "$SYNC_ROOT/WIPs/$MANUSCRIPT/pdfs"
+    mkdir -p "$SYNC_ROOT/WIPs/$MANUSCRIPT/md"
+    mkdir -p "$SYNC_ROOT/WIPs/$MANUSCRIPT/epub"
+
+    mkdir -p "$CLOUD_DIR/DOS/WS/WIPS/$DOS_DIR"
+    ln -s "$CLOUD_DIR/DOS/WS/WIPS/$DOS_DIR" "$SYNC_ROOT/WIPs/$MANUSCRIPT/txt"
+
+elif [ -d "$MANU_DIR/assets" ]; then
+    # check if dir exists, AND IF NOT, CREATES IT
+    # mkdir -p $MANU_DIR
+    echo "IT EXISTS! Moving on...."
+    mkdir -p "$SYNC_ROOT/WIPs/$MANUSCRIPT/pdfs"
+    mkdir -p "$SYNC_ROOT/WIPs/$MANUSCRIPT/md"
+    mkdir -p "$SYNC_ROOT/WIPs/$MANUSCRIPT/epub"
+
+    mkdir -p "$CLOUD_DIR/DOS/WS/WIPS/$DOS_DIR"
+    ln -s "$CLOUD_DIR/DOS/WS/WIPS/$DOS_DIR" "$SYNC_ROOT/WIPs/$MANUSCRIPT/txt"
+
+else
+    echo "Welcome to the void... error 001"
+fi
+
+echo "Now Checking if Symbolic link to DOSBOX project, $DOS_DIR exists...."
+if [ ! -d "$SYNC_ROOT/WIPs/$MANUSCRIPT/txt" ]; then
+    echo "Creating sym link to DOS txt dir"
+    mkdir -p "$CLOUD_DIR/DOS/WS/WIPS/$DOS_DIR"
+    ln -s "$CLOUD_DIR/DOS/WS/WIPS/$DOS_DIR" "$SYNC_ROOT/WIPs/$MANUSCRIPT/txt"
+elif [ -d "$SYNC_ROOT/WIPs/$MANUSCRIPT/txt" ]; then
+    echo "symbolic link to DOS dir exists. Get to writing, fool!" \
+    && rm "$SYNC_ROOT/WIPs/$MANUSCRIPT/txt" \
+    && ln -s "$CLOUD_DIR/DOS/WS/WIPS/$DOS_DIR" "$SYNC_ROOT/WIPs/$MANUSCRIPT/txt"
+else
+    echo "Enter the void..... errror you fucked up."
+fi

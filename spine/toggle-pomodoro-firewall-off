@@ -1,0 +1,11 @@
+#!/bin/bash
+pomodoro_firewall_disable() {
+if [[ -x $SPINE_DIR/firewall-on ]]; then
+	chmod 000 $SPINE_DIR/firewall-o* \
+	&& echo "Disabling Internet Blocking for Gnome Pomodoro Timer"
+else
+	echo "Internet connection will already blocked when Gnome Pomodoro Timer is used."
+fi
+}
+
+pomodoro_firewall_disable

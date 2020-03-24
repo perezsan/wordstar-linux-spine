@@ -1,0 +1,36 @@
+#!/bin/bash
+# Bootstrap variables for generating wordsmith documents, pdfs, epub, etc
+# gen_wordsmith_profile is the ame of this current dumpster fire . . .
+# DON'T USE SPACES in variables! sed/awk fucky wucky is then likey . .
+
+TITLE="FBI Jim"
+TITLE_DIR="FBI_Jim"
+DOS_DIR=FBIJIM
+
+VERSION=''
+# ^ ^ ^ ^ ^ ^ ^ ^
+# optional 'VERSION' extension '-WIP' to point to a copy of $TITLE folder;
+# useful for when you want an empty-ish wordsmith content dir
+
+# AUTHOR SHIT for Wordsmith git
+AUTHOR="Fool Beans"
+EMAIL="ja@vip.com"
+GITUSERNAME="Fool Beans"
+
+############################################################################################
+
+# This section should never need changing unless you fucked up Resilio Sync installatoin to $HOME/Sync,
+# or have abandonned Resilio altogether ...?
+MANUSCRIPT="$TITLE_DIR$VERSION"
+
+CLOUD_DIR="/home/$USER/Sync"
+PROJECT_ROOT="manuscripts"
+SYNC_ROOT="$CLOUD_DIR/$PROJECT_ROOT"
+ASSET_DIR="$HOME/.config/sublime-text-3"
+############################################################################################
+### EDIT Below okay   ###########
+# Short Storys, tv, movie, pron scripts, etc....
+FORMAT='Novels'
+MANU_DIR="$SYNC_ROOT/$FORMAT/$MANUSCRIPT"
+DATE="$(date +%F-%I%M%p)"
+

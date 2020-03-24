@@ -1,0 +1,18 @@
+#!/bin/bash
+# Generate 'PDF' using wordsmith
+############################################################################################
+# Default Config should be edited by running start-spine
+# If brave, manual config $SPINE_DIR/reticulation/gen_wordsmith_profile
+# Nothing should change here except bug fixesesese
+
+# Entering $MANU_DIR for WORK!!!!
+echo " -== [ GENERATING PDF ] ==- "
+
+cd $MANU_DIR
+
+echo "Generated $DOS_DIR-outline.pdf...." \
+&& pandoc $DOS_DIR-outline.md -s -o $DOS_DIR-outline.odt \
+-t odt --data-dir=~/.pandoc-outline \
+&& unoconv $DOS_DIR-outline.odt \
+&& echo "--== Finished! Opening $DOS_DIR-outline.pdf ==--" \
+

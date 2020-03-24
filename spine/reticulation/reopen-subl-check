@@ -1,0 +1,8 @@
+#!/bin/bash
+if ls $HOME/.hard.closed.subl 1> /dev/null 2>&1; then
+	subl3 \
+	&& rm $HOME/.hard.closed.subl \
+	&& echo "Sublime Text 3 Reopened..."
+    else
+	echo not restarting Sublime 3 Text... we didn\'t kill it intentionally
+fi

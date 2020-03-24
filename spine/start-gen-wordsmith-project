@@ -1,0 +1,9 @@
+#!/bin/bash
+cd $SPINE_DIR
+cat $SPINE_DIR/reticulation/gen_wordsmith_profile >> $SPINE_DIR/.tmp.start.gen.wordsmith.project \
+&& cat $SPINE_DIR/reticulation/gen_wordsmith_bootstrap >> $SPINE_DIR/.tmp.start.gen.wordsmith.project \
+&& chmod 755 $SPINE_DIR/.tmp.start.gen.wordsmith.project \
+&& $SPINE_DIR/.tmp.start.gen.wordsmith.project \
+&& rm $SPINE_DIR/.tmp.start.gen.wordsmith.project
+
+exit 0

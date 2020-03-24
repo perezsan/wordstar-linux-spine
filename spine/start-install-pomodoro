@@ -1,0 +1,12 @@
+#!/bin/bash
+pomo_check() {
+	if hash gnome-pomodoro 2>/dev/null ; then
+		echo Gnome Pomodoro already installed.
+    else
+		gnome-terminal -- $SPINE_DIR/reticulation/install-pomodoro
+    fi
+}
+
+pomo_check
+
+

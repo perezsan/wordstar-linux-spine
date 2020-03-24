@@ -1,0 +1,20 @@
+#!/bin/bash
+subl3_check() {
+	if hash subl3 2>/dev/null ; then
+		echo Sublime Text already installed.
+        else
+		livefs_check
+        fi
+}
+
+livefs_check() {
+	if ls /livefs-pkgs.txt 1> /dev/null 2>&1; then
+		echo livefs is loaded ... aborting. Install Wordstar Linux to Hard drive first, then desktop initialization should re-run on 1st boot!
+	else
+		gnome-terminal -- $SPINE_DIR/reticulation/install-sublime-nightly
+	fi
+}
+
+subl3_check
+
+

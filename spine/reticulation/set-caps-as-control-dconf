@@ -1,0 +1,6 @@
+#!/bin/bash
+cat $SPINE_DIR/reticulation/dconf-caps_as_control.ini \
+| dconf load /org/gnome/desktop/input-sources/ \
+&& cat $SPINE_DIR/reticulation/dconf-wordstar-background.ini \
+| dconf load /org/gnome/desktop/background/ \
+&& rm /home/$USER/.config/autostart/initial-config.desktop

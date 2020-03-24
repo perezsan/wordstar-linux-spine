@@ -1,0 +1,30 @@
+#!/bin/bash
+SCRIPTNAME=".tmp.start.outline.pdf"
+pomodoro_check () {
+if ls $HOME/.active.* 1> /dev/null 2>&1; then
+  echo "internet down ... stop pomodoro timer to regain connectivity, or run 'firewall-off'"
+else
+  echo "We have purposeful connectivity ... proceeding!" \
+  && $HOME/$SCRIPTNAME
+fi
+}
+
+clear_tmp() {
+	if ls $HOME/.tmp.* 1> /dev/null 2>&1; then
+		rm $HOME/.tmp.*
+	else
+		echo "No old tmp files hanging about .. proceeding."
+	fi
+}
+
+clear_tmp
+
+cd $SPINE_DIR
+cat $SPINE_DIR/reticulation/gen_wordsmith_profile >> $HOME/$SCRIPTNAME \
+&& cat $SPINE_DIR/reticulation/gen_pandoc_pdf >> $HOME/$SCRIPTNAME \
+&& cat $SPINE_DIR/reticulation/load_outline_pdf >> $HOME/$SCRIPTNAME \
+&& chmod 755 $HOME/$SCRIPTNAME \
+&& pomodoro_check \
+&& rm $HOME/$SCRIPTNAME
+
+exit 0

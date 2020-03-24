@@ -1,0 +1,6 @@
+#!/bin/bash
+gem install wordsmith bundler \
+&& cp $HOME/.config/sublime-text-3/generate.rb \
+$HOME/.gem/ruby/2.7.0/gems/wordsmith-0.0.6/lib/wordsmith/ \
+&& cat $SPINE_DIR/reticulation/dconf-gnome-favorites.ini | dconf load /org/gnome/shell/ \
+&& rm $HOME/.config/autostart/initial-wordstar-setup.desktop

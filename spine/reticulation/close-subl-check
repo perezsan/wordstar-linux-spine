@@ -1,0 +1,6 @@
+if pgrep subl &>/dev/null ; then
+	kill -9 $(pgrep subl) && touch $HOME/.hard.closed.subl \
+	&& echo "Killed Sublime Text 3 ... don't worry, will reload to refresh new project dir"
+    else
+	echo not running Sublime 3 Text
+fi

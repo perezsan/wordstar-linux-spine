@@ -1,0 +1,5 @@
+#!/bin/bash
+until $SPINE_DIR/reticulation/wsl-setup
+do
+   sleep 15
+done

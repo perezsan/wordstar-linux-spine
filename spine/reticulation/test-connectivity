@@ -1,0 +1,1 @@
+ACTIVE_INTERFACE=$(ip route | awk '/default/ { print $5 }')
