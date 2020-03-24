@@ -1,8 +1,0 @@
-echo Press ENTER to install Installing Pomodoro Timer \
-&& read && echo enter user password to install... \
-&& pamac build gnome-shell-pomodoro --no-confirm \
-&& cat ~/.scripts/spine/dconf-pomodoro.ini | dconf load /org/gnome/pomodoro/ \
-&& cat ~/.scripts/spine/dconf-gnome-favorites.ini | dconf load /org/gnome/shell/
-
-#&& pamac build i3ipc-python-git --no-confirm \
-#&& pamac build i3-gnome-pomodoro-git --no-confirm \
