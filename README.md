@@ -4,12 +4,14 @@ Sublime Text's frontend with wordsmith / pandoc ebook/pdf generation.
 Possibly some other crap not mentioned, too!
 
 **Requires Python3 and tk (tcl/tk.)**
+
 **and Ruby / rubygem**
+
 **And a Sublime Text 3 distro-specific install if not using Manjaro/arch**
 
-extract spine dir (I recommend ~/.config/spine), then add its location to your $PATH , then run Spine.py.
+clone project, then run ./install-spine.sh. Move spine dir wherever you like (I recommend ~/.config/spine), and add its location to your $PATH, then run Spine.py.
 
-Under **Advanced tab** you can set the spine scripts dir to whatever you like (it will update your ~/.profile and ~/.bashrc to source ~/.profile_spine.)
+Under **Advanced tab** you can set the spine scripts dir to whatever you like (it will update your ~/.profile and ~/.bashrc to source ~/.profile_spine **but not move the actual dir!**)
 
 These set of scripts can be easily modified to work on any distro and/or desktop enviroment (or even lack thereof.)
 Perhaps the goal will be to set it up as such, as these will probably only work under **Manjaro Linux 19.02**, or even Arch varients.
