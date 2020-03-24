@@ -81,6 +81,14 @@ class Wordsmith
 
       build_metadata_xml
 
+      ## Code below generates metadata fine with author and title detail
+      ## but its epub.css it shite. Would rather use unoconv if I could get
+      ## it to integrate nicely here somehow.  Figure I'm just missing proper quotes
+      ## somewhere in my hodgepodge of scripts, as apposed to
+      ## when I did have it working at one time with unoconv here. QQ.
+      ## pandoc solution below only works with 2.0 branch, not 1.0. Use -S instead
+      ## of +smart if still on the older pandoc for whatever reasons **cough funtoo**
+      ## ** cough centos **
       cmd = "pandoc -f markdown_mmd+smart -o #{output}.epub -t epub"
       cmd += " \\\n--epub-metadata=#{metadata}" if metadata
       cmd += " \\\n--epub-cover-image=#{cover}" if cover
