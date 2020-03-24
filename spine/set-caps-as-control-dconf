@@ -1,6 +1,0 @@
-#!/bin/bash
-cat /home/$USER/.scripts/spine/dconf-caps_as_control.ini \
-| dconf load /org/gnome/desktop/input-sources/ \
-&& cat /home/$USER/.scripts/spine/dconf-wordstar-background.ini \
-| dconf load /org/gnome/desktop/background/ \
-&& rm /home/$USER/.config/autostart/initial-config.desktop
