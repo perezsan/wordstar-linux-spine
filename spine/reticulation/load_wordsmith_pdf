@@ -8,7 +8,7 @@ xreader_or_evince() {
 }
 
 i3status_check() {
-	if pgrep i3status &>/dev/null ; then
+	if [ $DESKTOP_SESSION = "i3" ] ; then
 		i3-msg workspace 2|zathura --mode fullscreen "${SYNC_ROOT}/WIPs/${MANUSCRIPT}/pdfs/${TITLE}-${DATE}.pdf"
 	else
 		echo "i3 not loaded ... moving on"
@@ -40,7 +40,7 @@ plasma_check() {
 }
 
 gnome_check() {
-        if pgrep -l "gsd-keyboard" &>/dev/null ; then
+        if [ $DESKTOP_SESSION = "gnome" ] ; then
                 zathura --mode fullscreen "${SYNC_ROOT}/WIPs/${MANUSCRIPT}/pdfs/${TITLE}-${DATE}.pdf"
         else
             	echo "Gnome 3 Desktop not loaded... trying next desktop environment."
