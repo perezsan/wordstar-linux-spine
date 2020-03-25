@@ -3,9 +3,9 @@
 # gen_wordsmith_profile is the ame of this current dumpster fire . . .
 # DON'T USE SPACES in variables! sed/awk fucky wucky is then likey . .
 
-TITLE="Open Source"
-TITLE_DIR="Open_Source"
-DOS_DIR=OPENSOUR
+TITLE="Sample Title"
+TITLE_DIR="Sample_Title"
+DOS_DIR=SAMPLETI
 
 VERSION=''
 # ^ ^ ^ ^ ^ ^ ^ ^
