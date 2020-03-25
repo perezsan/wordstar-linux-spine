@@ -8,7 +8,7 @@ from tkinter import ttk
 # intializing the window
 window = tk.Tk()
 window.title("Wordstar Linux Configurator - SPINE")
-window.geometry('600x400')
+window.geometry('1080x500')
 
 # Color ttk via style
 style = ttk.Style()
