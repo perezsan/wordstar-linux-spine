@@ -9,9 +9,12 @@ Possibly some other crap not mentioned, too!
 
 **And a Sublime Text 3 distro-specific install if not using Manjaro/arch**
 
-clone project, then run ./install-spine.sh. Move spine dir wherever you like (I recommend ~/.config/spine), and add its location to your $PATH, then run Spine.py.
+clone project, chmod 700 install-spine.sh, then run ./install-spine.sh. Move spine dir wherever you like (I recommend ~/.config/spine), and add its location to your $PATH and such like this in ~/.profile and ~/.bashrc
 
-Under **Advanced tab** you can set the spine scripts dir to whatever you like (it will update your ~/.profile and ~/.bashrc to source ~/.profile_spine **but not move the actual dir!**)
+**export SPINE_DIR="$HOME/.config/spine"
+export PATH="$PATH:$SPINE_DIR"**
+
+then run Spine.py (you may need to log out of your desktop enviroment, and relog for settings to fully take affect
 
 These set of scripts can be easily modified to work on any distro and/or desktop enviroment (or even lack thereof.)
 Perhaps the goal will be to set it up as such, as these will probably only work under **Manjaro Linux 19.02**, or even Arch varients.
@@ -21,6 +24,7 @@ various flavors of Linux concurrently (e.g. funtoo, mx linux, fedora VM) but gut
 a community-derived buildiso from Manjaro Gnome 3, which is close to beta release. Not sure where I can host it, though. But for now, enjoy.
 
 ## **TODO**
-1. PDF, epub ebook generation should work, but everybody's setup is slightly different, I'd presume--especially if one opted to install rvm.
+1. A proper install script
+2. PDF, epub ebook generation should work, but everybody's setup is slightly different, I'd presume--especially if one opted to install rvm.
 
-2. Missing one of the most important aspect ... sumblime text keyboard config... not sure how to implement this with git. Probably just add the file to asset dir, then user will have to copy over to the proper directory manually (but if they're using Manjaro, I could script it easily.) All in good time.
+3. Missing one of the most important aspect ... sumblime text keyboard config... not sure how to implement this with git. Probably just add the file to asset dir, then user will have to copy over to the proper directory manually (but if they're using Manjaro, I could script it easily.) All in good time.
