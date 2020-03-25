@@ -175,11 +175,11 @@ ttk.Label(TAB5, text="Advanced Configuration: USE AT OWN RISK!",\
 #h = ttk.Entry(TAB5, textvariable=spine_dir)
 #h.grid(column=1, row=3, padx=2, pady=0)
 
-def process4(event=None):
-   spinedir = h.get()
-   print(spinedir)
-   subprocess.call('export SPINE_DIR_NEW="{}" && wsl-change-spine-dir-python'.format(spinedir), shell=True)
-h.bind('<Return>', process4)
+#def process4(event=None):
+#   spinedir = h.get()
+#   print(spinedir)
+#   subprocess.call('export SPINE_DIR_NEW="{}" && wsl-change-spine-dir-python'.format(spinedir), shell=True)
+#h.bind('<Return>', process4)
 
 
 tk.mainloop()
