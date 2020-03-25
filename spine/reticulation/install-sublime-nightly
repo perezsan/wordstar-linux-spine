@@ -1,5 +1,6 @@
 #!/bin/bash
 echo Press ENTER to install Sublime Text \
 && read && echo "--== [ You may be asked for $USER 's password to install--not root! }==-" \
+&& pamac update --no-confirm \
 && pamac build sublime-text-nightly --no-confirm \
 && cat $SPINE_DIR/reticulation/dconf-gnome-favorites.ini | dconf load /org/gnome/shell/
