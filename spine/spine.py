@@ -181,7 +181,4 @@ ttk.Label(TAB5, text="Advanced Configuration: USE AT OWN RISK!",\
 #   subprocess.call('export SPINE_DIR_NEW="{}" && wsl-change-spine-dir-python'.format(spinedir), shell=True)
 #h.bind('<Return>', process4)
 
-
-tk.mainloop()
-
 window.mainloop()
