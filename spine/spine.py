@@ -169,11 +169,11 @@ ttk.Label(TAB4, text="Alt+F2, then type only the letter r,\
 ttk.Label(TAB5, text="Advanced Configuration: USE AT OWN RISK!",\
    style="Black.Tab").grid(column=1, row=0, padx=10, pady=10)
 # Change SPINE_DIR
-ttk.Label(TAB5, text="Set Spine Scripts Path (Use if downloaded scripts from git)", \
-   style="").grid(column=0, row=3, padx=2, pady=0)
-spine_dir = ''
-h = ttk.Entry(TAB5, textvariable=spine_dir)
-h.grid(column=1, row=3, padx=2, pady=0)
+#ttk.Label(TAB5, text="Set Spine Scripts Path (Use if downloaded scripts from git)", \
+#   style="").grid(column=0, row=3, padx=2, pady=0)
+#spine_dir = ''
+#h = ttk.Entry(TAB5, textvariable=spine_dir)
+#h.grid(column=1, row=3, padx=2, pady=0)
 
 def process4(event=None):
    spinedir = h.get()
