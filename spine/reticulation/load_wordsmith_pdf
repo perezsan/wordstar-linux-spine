@@ -7,7 +7,7 @@ xreader_or_evince() {
 	fi
 }
 
-i3status_check() {
+i3_check() {
 	if [ $DESKTOP_SESSION = "i3" ] ; then
 		i3-msg workspace 2|zathura --mode fullscreen "${SYNC_ROOT}/WIPs/${MANUSCRIPT}/pdfs/${TITLE}-${DATE}.pdf"
 	else
@@ -48,6 +48,6 @@ gnome_check() {
 }
 
 gnome_check
-i3status_check
+i3_check
 #plasma_check
 #tde_check
