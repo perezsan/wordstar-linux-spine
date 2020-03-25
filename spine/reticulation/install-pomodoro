@@ -1,6 +1,7 @@
 #!/bin/bash
 echo Press ENTER to install Installing Pomodoro Timer \
 && read && echo "--== [ You may be asked for $USER 's password to install--not root! }==-" \
+&& pamac update --no-confirm \
 && pamac build gnome-shell-pomodoro --no-confirm \
 && cat $SPINE_DIR/reticulation/dconf-pomodoro.ini | dconf load /org/gnome/pomodoro/ \
 && cat $SPINE_DIR/reticulation/dconf-gnome-favorites.ini | dconf load /org/gnome/shell/
