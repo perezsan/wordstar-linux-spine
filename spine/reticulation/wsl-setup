@@ -1,9 +1,13 @@
 #!/bin/bash
 # Note: script fix_up ... copying of asset from wordsmith to gem folder 
 # probably won't work on distros other than Manjaro 19.02 with current implementation
+# especially if you're using rvm
 source $SPINE_DIR/reticulation/gen_wordsmith_profile \
-gem install wordsmith bundler \
-&& cp $ASSET_DIR/generate.rb \
-$HOME/.gem/ruby/2.7.0/gems/wordsmith-0.0.6/lib/wordsmith/ \
+gem install bundle \
+&& git clone https://github.com/perezsan/wordsmith.git \
+&& cd wordsmith \
+&& bundle install \
+&& rake build \
+&& gem install pkg/wordsmith-0.0.6.gem \
 && cat $SPINE_DIR/reticulation/dconf-gnome-favorites.ini | dconf load /org/gnome/shell/ \
 && rm $HOME/.config/autostart/initial-wordstar-setup.desktop
