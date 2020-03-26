@@ -2,6 +2,7 @@
 # Note: script fix_up ... copying of asset from wordsmith to gem folder 
 # probably won't work on distros other than Manjaro 19.02 with current implementation
 # especially if you're using rvm
+# fix_up ... move *.ini files to $ASSET_DIR and update all code
 source $SPINE_DIR/reticulation/gen_wordsmith_profile \
 gem install bundle \
 && git clone https://github.com/perezsan/wordsmith.git \
