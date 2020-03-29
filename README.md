@@ -9,7 +9,7 @@ Possibly some other crap not mentioned, too!
 
 **And a Sublime Text 3 distro-specific install if not using Manjaro/arch**
 
-clone project, chmod 700 install-spine.sh, then run ./install-spine.sh. Move spine dir wherever you like (I recommend ~/.config/spine), and add its location to your $PATH and such like this in ~/.profile and ~/.bashrc
+clone project, chmod 700 install-spine.sh, then run ./install-spine.sh. Move spine dir wherever you like (I recommend ~/.config/spine), and add its location to your $PATH like this in ~/.profile, ~/.bashrc, and most positively, ~/.bash_profile :
 
 **export SPINE_DIR="$HOME/.config/spine"
 export PATH="$PATH:$SPINE_DIR"**
