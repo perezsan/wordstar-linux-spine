@@ -1,6 +1,7 @@
 #!/bin/bash
-source $SPINE_DIR/reticulation/gen_wordsmith_profile; \
-cp "$SPINE_DIR/assets/meta.xml" "$HOME/.pandoc/meta.xml" \
-&& xmlstarlet ed -P -O -L -u '//dc:title/text()' -v "$TITLE" "$HOME/.pandoc/meta.xml" \
-&& cd ~/.pandoc \
-&& zip reference.odt meta.xml
+# commenting out because I haven't implemented reference.odt file to assets dir yet
+#source $SPINE_DIR/reticulation/gen_wordsmith_profile; \
+#cp "$SPINE_DIR/assets/meta.xml" "$HOME/.pandoc/meta.xml" \
+#&& xmlstarlet ed -P -O -L -u '//dc:title/text()' -v "$TITLE" "$HOME/.pandoc/meta.xml" \
+#&& cd ~/.pandoc \
+#&& zip reference.odt meta.xml
