@@ -3,9 +3,9 @@
 # gen_wordsmith_profile is the ame of this current dumpster fire . . .
 # DON'T USE SPACES in variables! sed/awk fucky wucky is then likey . .
 
-TITLE="Life Whale"
-TITLE_DIR="Life_Whale"
-DOS_DIR=LIFEWHAL
+TITLE="Your Manuscript"
+TITLE_DIR="Your_Manuscript"
+DOS_DIR=YOURMANU
 
 VERSION=''
 # ^ ^ ^ ^ ^ ^ ^ ^
@@ -13,9 +13,9 @@ VERSION=''
 # useful for when you want an empty-ish wordsmith content dir
 
 # AUTHOR SHIT for Wordsmith git
-AUTHOR="Jason Ramone"
-EMAIL="ja.norseman@pm.me"
-GITUSERNAME="Jason Ramone"
+AUTHOR="Your Name"
+EMAIL="your@email.addy"
+GITUSERNAME="Your Name"
 
 ############################################################################################
 
@@ -23,7 +23,7 @@ GITUSERNAME="Jason Ramone"
 # or have abandonned Resilio altogether ...?
 MANUSCRIPT="$TITLE_DIR$VERSION"
 
-CLOUD_DIR="/home/lain/opo"
+CLOUD_DIR="$HOME/Sync"
 PROJECT_ROOT="manuscripts"
 SYNC_ROOT="$CLOUD_DIR/$PROJECT_ROOT"
 ASSET_DIR="$SPINE_DIR/assets"
