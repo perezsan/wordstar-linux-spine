@@ -7,14 +7,18 @@ Possibly some other crap not mentioned, too!
 
 **and Ruby / rubygem**
 
-**And a Sublime Text 3 distro-specific install if not using Manjaro/arch**
+**[Wordsmith](https://github.com/perezsan/wordsmith)
+
+**And a Sublime Text 3 **
+
+**(optional)** xmlstarlet for reference.odt title updating
 
 clone project, chmod 700 install-spine.sh, then run ./install-spine.sh. Move spine dir wherever you like (I recommend ~/.config/spine), and add its location to your $PATH like this in ~/.profile, ~/.bashrc, and most positively, ~/.bash_profile :
 
 **export SPINE_DIR="$HOME/.config/spine"
 export PATH="$PATH:$SPINE_DIR"**
 
-then run Spine.py (you may need to log out of your desktop enviroment, and relog for settings to fully take affect
+then run start-spine (you may need to log out of your desktop enviroment, and relog for settings to fully take affect
 
 These set of scripts can be easily modified to work on any distro and/or desktop enviroment (or even lack thereof.)
 Perhaps the goal will be to set it up as such, as these will probably only work under **Manjaro Linux 19.02**, or even Arch varients.
