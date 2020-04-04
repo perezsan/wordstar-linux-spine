@@ -1,9 +1,11 @@
 #!/bin/bash
 subl3_check() {
         if hash subl3 2>/dev/null ; then
-                subl3 "$ASSET_DIRCheat\ sheet\ -\ BEGINNERS\ GUIDE.md"
+		source $SPINE_DIR/reticulation/gen_wordsmith_profile \
+		&& subl3 $ASSET_DIR/Cheat\ sheet\ -\ BEGINNERS\ GUIDE.md
         else
-            	gedit "$ASSET_DIR/Cheat\ sheet\ -\ BEGINNERS\ GUIDE.md"
+		source $SPINE_DIR/reticulation/gen_wordsmith_profile \
+            	&& gedit $ASSET_DIR/Cheat\ sheet\ -\ BEGINNERS\ GUIDE.md
         fi
 }
 

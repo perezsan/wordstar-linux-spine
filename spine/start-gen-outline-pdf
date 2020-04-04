@@ -10,11 +10,12 @@ fi
 }
 
 clear_tmp() {
-	if ls $HOME/.tmp.* 1> /dev/null 2>&1; then
-		rm $HOME/.tmp.*
-	else
-		echo "No old tmp files hanging about .. proceeding."
-	fi
+	if ls $HOME/$SCRIPTNAME 1> /dev/null 2>&1; then
+                echo "removing dangiling .tmp file ... something didn't finsh executing, perhaps?"
+                rm $HOME/$SCRIPTNAME
+        else
+            	echo "No old tmp files hanging about ..."
+        fi
 }
 
 clear_tmp
@@ -24,7 +25,7 @@ cat $SPINE_DIR/reticulation/gen_wordsmith_profile >> $HOME/$SCRIPTNAME \
 && cat $SPINE_DIR/reticulation/gen_pandoc_pdf >> $HOME/$SCRIPTNAME \
 && cat $SPINE_DIR/reticulation/load_outline_pdf >> $HOME/$SCRIPTNAME \
 && chmod 755 $HOME/$SCRIPTNAME \
-&& pomodoro_check \
-&& rm $HOME/$SCRIPTNAME
+&& pomodoro_check; \
+clear_tmp
 
 exit 0

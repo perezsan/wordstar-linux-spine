@@ -9,6 +9,11 @@ echo " -== [ GENERATING PDF ] ==- "
 cd "$MANU_DIR"
 wordsmith g odt \
 && cp "$MANU_DIR/final/$MANUSCRIPT/$MANUSCRIPT.odt" "$MANU_DIR/final/$MANUSCRIPT.odt" \
+&& cd "$MANU_DIR/final" \
+&& recalculate-word-count \
+&& cp "$HOME/.pandoc/meta.xml" . \
+&& zip "$MANUSCRIPT.odt" meta.xml \
+&& cd "$MANU_DIR" \
 && wordsmith g pdf \
 && echo "Moving $MANUSCRIPT.pdf to $SYNC_ROOT/WIPs/$MANUSCRIPT/pdfs...." \
 && mv "$MANU_DIR/final/$MANUSCRIPT.pdf" "$SYNC_ROOT/WIPs/$MANUSCRIPT/pdfs/$TITLE-$DATE.pdf" \

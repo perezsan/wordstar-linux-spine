@@ -1,0 +1,2 @@
+#!/bin/bash
+$SPINE_DIR/start-spine

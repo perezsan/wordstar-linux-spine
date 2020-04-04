@@ -1,0 +1,5 @@
+#!/bin/bash
+source $SPINE_DIR/reticulation/gen_wordsmith_profile
+echo "-==[ Archiving Project Folders ]==-"
+tar -czv -C $MANU_DIR ../ \
+| gpg2 -c -o $ARCHIVE_DIR/Everything-$DATE.tar.gz.gpg

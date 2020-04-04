@@ -2,17 +2,17 @@
 
 echo "$TITLE" | sed 's/ /\\ /g' \
 && sed -i.bak 's,TITLE=.*,TITLE=\"'"$TITLE"'\",' "$SPINE_DIR/reticulation/gen_wordsmith_profile" \
-&& DOS_DIR=$(echo "$TITLE" | tr -d '[:space:]' | tr -d '[=_=]' | tr -d '[=-=]' | cut -c -7 | sed "s/[a-z]/\U&/g") \
+&& DOS_DIR=$(echo "$TITLE" | tr -d '[:space:]' | tr -d '[=_=]' | tr -d '[=-=]' | cut -c -8 | sed "s/[a-z]/\U&/g") \
 && sed -i.bak "s/DOS_DIR=.*/DOS_DIR=$DOS_DIR/g" $SPINE_DIR/reticulation/gen_wordsmith_profile \
 && TITLE_DIR=$(echo "$TITLE" | sed 's/ /\_/g') \
 && sed -i.bak 's,TITLE_DIR=.*,TITLE_DIR=\"'"$TITLE_DIR"'\",' "$SPINE_DIR/reticulation/gen_wordsmith_profile" \
 && start-gen-wordsmith-project \
 && $SPINE_DIR/reticulation/close-subl-check; \
 rm $HOME/.config/sublime-text-3/Local/Session.sublime_session; \
-cp $SPINE_DIR/reticulation/Session.sublime_session $HOME/.config/sublime-text-3/Local \
-&& source "$SPINE_DIR/reticulation/gen_wordsmith_profile"; \
-sed -i.bak 's,path.*,path\"\: \"'"$MANU_DIR"'\",' "$HOME/.config/sublime-text-3/Local/Session.sublime_session" \
-&& sed -i.bak 's,expanded".*,'"$MANU_DIR"'\",' "$HOME/.config/sublime-text-3/Local/Session.sublime_session" \
+source "$SPINE_DIR/reticulation/gen_wordsmith_profile"; \
+cp $ASSET_DIR/Session.sublime_session $HOME/.config/sublime-text-3/Local; \
+sed -i.bak 's,path.*,path\"\: \"'"$MANU_DIR"'\"\}\,\{ \"path\"\:\ \"'"$WIP_DIR"'\",' "$HOME/.config/sublime-text-3/Local/Session.sublime_session" \
+&& sed -i.bak 's,expanded".*,'"$MANU_DIR"'\"\,\"'"$WIP_DIR"'\",' "$HOME/.config/sublime-text-3/Local/Session.sublime_session" \
 && $SPINE_DIR/reticulation/reopen-subl-check \
 
 

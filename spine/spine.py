@@ -4,40 +4,32 @@ import subprocess
 import sys
 import tkinter as tk
 from tkinter import ttk
-
+#### pip3 install --user envbash if python throws you shit fitss
+from envbash import load_envbash
+## needed for StringVars
+from tkinter import *
 # intializing the window
-window = tk.Tk()
-window.title("Wordstar Linux Configurator - SPINE")
-window.geometry('1080x500')
+from tab_bindings import *
+
+sys.path.append("$SPINE_DIR/")
+sys.path.append("$SPINE_DIR/reticulation/")
 
 # Color ttk via style
+# todo... fix_me ... create style.py and move any shits there
 style = ttk.Style()
 style.configure("Black.Tab", foreground="white", background="black")
 
-sys.path.append("$SPINE_DIR/")
+# Load wsl profile through envbash to get BASH Variables for current project title only
+# upon start-spine loading.
+# ... Project Title is then updated to statusbar through textvariable='userinput' and command at end of (process) function
 
-#Call the tab framework
-TAB_BINDINGS = ttk.Notebook(window)
-#Welcome / readme 1st tab
-TAB1 = ttk.Frame(TAB_BINDINGS)
-TAB_BINDINGS.add(TAB1, text='Main')
-# Archive /Rename Project Tab
-TAB2 = ttk.Frame(TAB_BINDINGS)
-TAB_BINDINGS.add(TAB2, text='Archive')
-TAB_BINDINGS.pack(expand=1, fill="both")
-#INstall writing apps
-TAB3 = ttk.Frame(TAB_BINDINGS)
-TAB_BINDINGS.add(TAB3, text='Install Writing Apps')
-TAB_BINDINGS.pack(expand=1, fill="both")
-#Writing Utilities
-TAB4 = ttk.Frame(TAB_BINDINGS)
-TAB_BINDINGS.add(TAB4, text='Install Writing Utilities')
-TAB_BINDINGS.pack(expand=1, fill="both")
+load_envbash('reticulation/gen_wordsmith_profile', remove=True)
 
-#Advanced Configuration i.e. change author name, change project title, change cloud dir, change root install dir
-TAB5 = ttk.Frame(TAB_BINDINGS)
-TAB_BINDINGS.add(TAB5, text='Advanced Configuration')
-TAB_BINDINGS.pack(expand=1, fill="both")
+project_title = (os.environ['TITLE'])
+author_name = (os.environ['AUTHOR'])
+author_email = (os.environ['EMAIL'])
+wip_folder = (os.environ['WIP_DIR'])
+wip_root = (os.environ['WIP_ROOT'])
 
 ###################
 #Tab window contents i.e. buttons
@@ -45,117 +37,193 @@ TAB_BINDINGS.pack(expand=1, fill="both")
 # 1st tab definitions, mostly buttons
 def openCheatSheet():
    print ("Opening Sublime Text Cheat Sheet...")
-   subprocess.call('start-opencheatsheet', shell=True)
-
+   subprocess.Popen(['start-opencheatsheet'])
 
 # Firewall on/off for gnome-pomodor checkbox
 #definitions for firewallOff and firewallOn
 
 def PomodoroFirewallOn():
-   subprocess.call('toggle-pomodoro-firewall-on', shell=True)
+   subprocess.Popen(['toggle-pomodoro-firewall-on'])
 def PomodoroFirewallOff():
-   subprocess.call('toggle-pomodoro-firewall-off')
+   subprocess.Popen(['toggle-pomodoro-firewall-off'])
 
-#1st tab - Fresh Install Help
-ttk.Label(TAB1, text="Welcome to Wordstar Linux System Configurator",\
-   style="Black.Tab").grid(column=0, row=0, padx=10, pady=10, columnspan=3)
-ttk.Button(TAB1, text="Wordstar Linux: Getting Started...",\
-   command = openCheatSheet).grid(column=0, row=6, padx=10, pady=10)
+# Spine Configurator on/off autostarter checkbox
+#definitions for SpineOn SpineOFf
 
-# configs
+def SpineOn():
+   subprocess.Popen(['toggle-spine-autostart-on'])
+def SpineOff():
+   subprocess.Popen(['toggle-spine-autostart-off'])
+
+#1st tab - Main Functions put on 1st tab so user doesn't have to wander tabs much or at all
+##### TAB1 Section Titles ######
+
+ttk.Label(TAB1, text="Create / Modify Project Profile",\
+   style="Black.Tab").grid(column=1, row=0, padx=10, pady=10, columnspan=8, sticky=tk.E+tk.W)
+ttk.Button(TAB1, text="Open Project in Sublime Text 3 . . .",\
+   command = openCheatSheet).grid(column=4, row=4, padx=20, pady=10, columnspan=3)
+##################### Set Project Name #############
 ttk.Label(TAB1, text="Project Name (New or Existing)", \
-   style="").grid(column=0, row=1, padx=10, pady=20)
-#Set Project Name
-userin = ''
-e = ttk.Entry(TAB1, textvariable=userin)
-e.grid(column=1, row=1, padx=2, pady=0)
+   style="").grid(column=2, row=1, padx=10, pady=20)
 
-def process(event=None):
-   content = e.get()
-   print(content)
-   subprocess.call('export TITLE="{}" && wsl-set-current-project-python'.format(content), shell=True)
+userinput = ''
+project = ttk.Entry(TAB1, textvariable=userinput)
+project.grid(column=3, row=1, padx=2, pady=0)
 
-# Set Author
+class Project:
+	def __init__(self):
+		pass
+	def openFolder(event):
+		manu_folder = (os.environ['MANU_DIR'])
+		subprocess.Popen(['xdg-open', manu_folder])
+	def setCurrent(event=None):
+		content = project.get()
+		subprocess.Popen(['/bin/bash', '-c','export TITLE="{}"' ' && ' \
+			'wsl-set-current-project'.format(content)])
+		statusbar.config(text='Current Project:  '+str(content))
+		content_dir=content.replace(" ","_")
+		format_folder = (os.environ['FORMAT_DIR'])
+		new_project_folder = format_folder+content_dir
+		statusbar.unbind("<Button-1>")
+		def updateFolder(event):
+			subprocess.Popen(['xdg-open', new_project_folder])
+		statusbar.bind("<Button-1>", updateFolder)
+
+		statusbar4.unbind("<Buttion-1>")
+		wip_root = (os.environ['WIP_ROOT'])
+		new_wip_dir = wip_root+content_dir
+		statusbar4.config(text='Output Dir:  '+str(new_wip_dir))
+
+		def clickWipFolder(event):
+			subprocess.Popen(['xdg-open', new_wip_dir])
+		statusbar4.bind("<Button-1>", clickWipFolder)
+
+project.bind('<Return>', Project.setCurrent)
+
+##################### Set Author ##########
 ttk.Label(TAB1, text="Pen Name", \
-   style="").grid(column=0, row=2, padx=10, pady=20)
-userin2 = ''
-f = ttk.Entry(TAB1, textvariable=userin2)
-f.grid(column=1, row=2, padx=2, pady=0)
+   style="").grid(column=2, row=2, padx=10, pady=20)
+userinput2 = ''
+author = ttk.Entry(TAB1, textvariable=userinput2)
+author.grid(column=3, row=2, padx=2, pady=0)
 
-def process2(event=None):
-   penname = f.get()
+def setAuthor(event=None):
+   penname = author.get()
    print(penname)
-   subprocess.call('export AUTHOR="{}" && wsl-change-author-python'.format(penname), shell=True)
+   subprocess.Popen(['/bin/bash', '-c','export AUTHOR="{}"' ' && ' \
+	'wsl-change-author'.format(penname)])
+   statusbar_author.config(text='Pen Name:  '+str(penname))
+author.bind('<Return>', setAuthor)
 
-# Set Email
+##################### Set Email ############
 ttk.Label(TAB1, text="Author\'s Email", \
-   style="").grid(column=0, row=3, padx=10, pady=20)
-userin3 = ''
-g = ttk.Entry(TAB1, textvariable=userin3)
-g.grid(column=1, row=3, padx=2, pady=0)
+   style="").grid(column=2, row=3, padx=10, pady=20)
+userinput3 = ''
+email = ttk.Entry(TAB1, textvariable=userinput3)
+email.grid(column=3, row=3, padx=2, pady=0)
 
-def process3(event=None):
-   email = g.get()
+def setEmail(event=None):
+   authoremail = email.get()
    print(email)
-   subprocess.call('export EMAIL="{}" && wsl-change-email-python'.format(email), shell=True)
+   subprocess.Popen(['/bin/bash', '-c','export EMAIL="{}"' ' && ' \
+	'wsl-change-email'.format(authoremail)])
+   statusbar_email.config(text='Email:  '+str(authoremail))
 
-e.bind('<Return>', process)
-f.bind('<Return>', process2)
-g.bind('<Return>', process3)
-
-
-# Disable/enable firewall rules when using Gnome Pomodoro timers ...
-#probably should leave it enabled if you want to get writing done!
-firewallon = ttk.Radiobutton(TAB1, text="Enable Internet Blocking when Using Gnome Pomodoro", \
-value=1,\
-command = PomodoroFirewallOn).grid(column=0, row=4, padx=2, pady=10)
-firewalloff = ttk.Radiobutton(TAB1, text="Disable Internet Blocking when Using Gnome Pomodoro", \
-value=2,\
- command = PomodoroFirewallOff).grid(column=0, row=5, padx=2, pady=10)
+email.bind('<Return>', setEmail)
 
 ### 2nd tab - Archive /rename utilities
-
 #Archive Current Project and/or WIP folder ... with option for encryption
-# value = StringVar()
-# keepvalue = value.get()
+# invoking archive_start.py that's in spine dir
+from archive_start import *
 
-# box = ttk.Combobox(TAB2, textvariable=keepvalue, state='readonly')
-# box['values'] = ('Archive Project (with encryption)', \
-#'Archive WIPs only (with encryption)', 'Archive Both (with encryption)')
-# box.current(0)
-# box.grid(column=0, row=0)
+ttk.Label(TAB2, text=". . . Archive Options . . .", \
+	style="Black.Tab").grid(column=2, row=0, padx=0, pady=0, sticky=tk.E+tk.W)
 
+c1 = ttk.Checkbutton(TAB2, text='Use Encryption', \
+	var=c1_var, onvalue='Yes', offvalue='No',command=lambda: use_encryption(var.get())) \
+	.grid(column=2, row=1, padx=0, pady=0)
+
+c2 = ttk.Checkbutton(TAB2, text='Delete Project Folder After Archiving', \
+	var=c2_var, onvalue='Yes', offvalue='No',command=lambda: delete_project_after_archive(var.get())) \
+	.grid(column=2, row=2, padx=0, pady=0)
+
+c3 = ttk.Checkbutton(TAB2, text='Delete WIPs Folder After Archiving', \
+	var=c3_var, onvalue='Yes', offvalue='No',command=lambda: delete_project_after_archive(var.get())) \
+	.grid(column=2, row=3, padx=0, pady=0)
+
+# var StringVar for Archive Current. . .
+var=StringVar(TAB2)
+var.set(None)
+ttk.Label(TAB2, text="Archive Current. . .", style="Black.Tab").grid(column=0, row=0, padx=0, pady=0, sticky=tk.E+tk.W)
+ttk.Radiobutton(TAB2, text='Project Folder', value='markdown_only', variable=var) \
+	.grid(column=0, row=1, padx=2, pady=0)
+ttk.Radiobutton(TAB2, text='WIPs (e.g. pdf, epub output)', value='wips_only', variable=var) \
+	.grid(column=0, row=2, padx=2, pady=0)
+ttk.Radiobutton(TAB2, text='Project and WIPs Folders', value='archive_all', variable=var) \
+	.grid(column=0, row=3, padx=2, pady=0)
+ttk.Button(TAB2, text='Archive', command=lambda: start(var.get())) \
+	.grid(column=1, row=2, padx=5, pady=0)
 
 # Rename Project ... rename folder with $TITLE, and rename .wordsmith and metadata.xml files
-ttk.Label(TAB2, text="Rename Current Project", \
-   style="").grid(column=0, row=1, padx=2, pady=0)
+ttk.Label(TAB1, text="Rename Current Project", \
+   style="").grid(column=2, row=4, padx=20, pady=20)
 rename_project = ''
-i = ttk.Entry(TAB2, textvariable=rename_project)
-i.grid(column=1, row=1, padx=2, pady=0)
+i = ttk.Entry(TAB1, textvariable=rename_project)
+i.grid(column=3, row=4, padx=2, pady=0)
 
-def process5(event=None):
-   renamedir = i.get()
-   print(renamedir)
-   subprocess.call('export TITLE_DIR_NEW="{}" && wsl-rename-current-project-python'.format(renamedir), shell=True)
-i.bind('<Return>', process5)
+def renameCurrentProject(event=None):
+	renameproject = i.get()
+	print(renameproject)
+	subprocess.Popen(['/bin/bash', '-c','export TITLE_DIR_NEW="{}"' ' && ' \
+		'wsl-rename-current-project'.format(renameproject)])
+	statusbar.config(text='Current Project:'+str(renameproject))
+	renameproject_dir=renameproject.replace(" ","_")
+	format_folder = (os.environ['FORMAT_DIR'])
+	renamed_project_folder = format_folder+renameproject_dir
+	statusbar.unbind("<Button-1>")
+	def clickRenamedFolder(event):
+		subprocess.Popen(['xdg-open', renamed_project_folder])
+	statusbar.bind("<Button-1>", clickRenamedFolder)
+
+	statusbar4.unbind("<Buttion-1>")
+	wip_root = (os.environ['WIP_ROOT'])
+	new_wip_dir = wip_root+renameproject_dir
+	statusbar4.config(text='Output Dir:  '+str(new_wip_dir))
+	def clickWipFolder(event):
+		subprocess.Popen(['xdg-open', new_wip_dir])
+	statusbar4.bind("<Button-1>", clickWipFolder)
+i.bind('<Return>', renameCurrentProject)
+
+ttk.Label(TAB2, text="Quick and Dirty Backup",\
+   style="Black.Tab").grid(column=0, row=8, padx=10, pady=10, columnspan=5, sticky=tk.E+tk.W)
+
+def archive_everything():
+   print ("Backup All Projects & WIPs")
+   subprocess.Popen(['wsl-archive-everything'])
+ttk.Button(TAB2, text="Backup All Projects & WIPs", command = archive_everything).grid(column=1, row=9, padx=10, pady=10)
+
+def archive_encrypt_everything():
+   print ("Backup All Projects & WIPs (with Encryption)")
+   subprocess.Popen(['wsl-archive-encrypt-everything'])
+ttk.Button(TAB2, text="Backup All Projects & WIPs (with Encryption)", command = archive_encrypt_everything).grid(column=1, row=10, padx=10, pady=10)
 
 #3rd tab - Install Writing Apps
 def installSublimeStable():
    print ("Installing Sublime Text 3...")
-   subprocess.call('start-install-sublime-text', shell=True)
+   subprocess.Popen(['start-install-sublime-text'])
 
 def installSublimeNightly():
    print ("Installing Sublime Text 3 Nightly...")
-   subprocess.call('start-install-sublime-text-nightly', shell=True)
+   subprocess.Popen(['start-install-sublime-text-nightly'])
 
-ttk.Label(TAB3, text="Sublime Options", style="Black.Tab").grid(column=0, row=0, padx=10, pady=10)
-ttk.Button(TAB3, text="Install Sublime Text 3", command = installSublimeStable).grid(column=0, row=1, padx=10, pady=10)
+ttk.Label(TAB3, text="Sublime Options", style="Black.Tab").grid(column=0, row=0, padx=0, pady=0)
+# ttk.Button(TAB3, text="Install Sublime Text 3", command = installSublimeStable).grid(column=0, row=1, padx=10, pady=10)
 ttk.Button(TAB3, text="Install Sublime Text 3 Nightly", command = installSublimeNightly).grid(column=0, row=2, padx=10, pady=10)
 
 #4th tab - Writing Utilities
 def installPomodoro():
    print ("Installing Gnome Pomodoro...")
-   subprocess.call('start-install-pomodoro', shell=True)
+   subprocess.Popen(['start-install-pomodoro'])
 
 ttk.Button(TAB4, text="Install Gnome Pomodoro", command = installPomodoro).grid(column=0, row=0, padx=20, pady=10)
 
@@ -166,19 +234,86 @@ ttk.Label(TAB4, text="Alt+F2, then type only the letter r,\
 
 #5th tab - Advanced Wordstar Linux Configuration
 #Definitions for Advanced Folder Config --use at own risk!
-ttk.Label(TAB5, text="Advanced Configuration: USE AT OWN RISK!",\
-   style="Black.Tab").grid(column=1, row=0, padx=10, pady=10)
-# Change SPINE_DIR
-#ttk.Label(TAB5, text="Set Spine Scripts Path (Use if downloaded scripts from git)", \
-#   style="").grid(column=0, row=3, padx=2, pady=0)
-#spine_dir = ''
-#h = ttk.Entry(TAB5, textvariable=spine_dir)
-#h.grid(column=1, row=3, padx=2, pady=0)
+ttk.Label(TAB5, text="Startup Configuration",\
+   style="Black.Tab").grid(column=0, row=0, padx=10, pady=10, sticky=tk.E+tk.W)
 
-#def process4(event=None):
-#   spinedir = h.get()
-#   print(spinedir)
-#   subprocess.call('export SPINE_DIR_NEW="{}" && wsl-change-spine-dir-python'.format(spinedir), shell=True)
-#h.bind('<Return>', process4)
+
+# Disable/enable Autostarting of
+#Wordstar Linux Spine Configurator upon boot
+spineon = ttk.Radiobutton(TAB5, text="Autostart Spine", \
+value=1,\
+command = SpineOn).grid(column=0, row=1, padx=2, pady=10)
+spineoff = ttk.Radiobutton(TAB5, text="Disable Spine Upon Login", \
+value=2,\
+ command = SpineOff).grid(column=0, row=2, padx=2, pady=10)
+
+ttk.Label(TAB5, text="Cloud Directory (Default:  $HOME/Sync)", \
+   style="").grid(column=0, row=5, padx=2, pady=0)
+cloud_dir = ''
+newclouddir = ttk.Entry(TAB5, textvariable=cloud_dir)
+newclouddir.grid(column=1, row=5, padx=2, pady=0)
+
+def changeCloudDir(event=None):
+	clouddir = newclouddir.get()
+	print(clouddir)
+	subprocess.Popen(['/bin/bash', '-c','export CLOUD_DIR_NEW="{}"' ' && ' \
+		'wsl-change-cloud-dir' ' && ' \
+		'start-gen-wordsmith-project'.format(clouddir)])
+	title = (os.environ['TITLE'])
+	new_manu_folder = (os.environ['NEW_MANU_DIR'])
+	cloud_dir=clouddir.replace(" ","_")
+	title_dir=title.replace(" ","_")
+	renamed_sync_folder = cloud_dir+new_manu_folder+title_dir
+	statusbar.config(text='Current Project: '+str(title))
+	statusbar.unbind("<Button-1>")
+	def clickRenamedCloudFolder(event):
+		subprocess.Popen(['xdg-open', renamed_sync_folder])
+	statusbar.bind("<Button-1>", clickRenamedCloudFolder)
+
+	statusbar4.unbind("<Buttion-1>")
+	project_root = (os.environ['PROJECT_ROOT'])
+	new_wip_dir = cloud_dir+'/'+project_root+'/WIPs/'+title_dir
+	statusbar4.config(text='Output Dir:  '+str(new_wip_dir))
+	def clickWipFolder(event):
+		subprocess.Popen(['xdg-open', new_wip_dir])
+	statusbar4.bind("<Button-1>", clickWipFolder)
+newclouddir.bind('<Return>', changeCloudDir)
+
+# Disable/enable firewall rules when using Gnome Pomodoro timers ...
+#probably should leave it enabled if you want to get writing done!
+ttk.Label(TAB5, text="Advanced Configuration",\
+   style="Black.Tab").grid(column=0, row=4, padx=10, pady=10, columnspan=5, sticky=tk.E+tk.W)
+ttk.Label(TAB5, text="Pomodoro Integration",\
+   style="Black.Tab").grid(column=3, row=0, padx=10, pady=10, sticky=tk.E+tk.W)
+firewallon = ttk.Radiobutton(TAB5, text="Enable Internet Blocking", \
+value=1,\
+command = PomodoroFirewallOn).grid(column=3, row=1, padx=2, pady=0)
+firewalloff = ttk.Radiobutton(TAB5, text="Disable Internet Blocking", \
+value=2,\
+ command = PomodoroFirewallOff).grid(column=3, row=2, padx=2, pady=0)
+
+# Status Bar and its updates to any change in Project Title, Author, or email, etc
+openFolder = Project.openFolder
+statusbar = tk.Label(window, bd=1, relief=tk.SUNKEN, anchor=tk.N,text='Current Project:  '+str(project_title), font='bold')
+statusbar.pack(side=tk.TOP, fill=tk.X)
+statusbar.bind("<Button-1>", openFolder)
+
+# author / penname status
+statusbar_author = tk.Label(window, bd=1, relief=tk.SUNKEN, anchor=tk.W,text='Pen Name:  '+str(author_name))
+statusbar_author.pack(side=tk.LEFT, fill=tk.X)
+# Email
+statusbar_email= tk.Label(window, bd=1, relief=tk.SUNKEN, anchor=tk.W,text='Email:  '+str(author_email))
+statusbar_email.pack(side=tk.RIGHT, fill=tk.X)
+
+# WIP Folder .. click to open it
+def clickWipFolder(event):
+	wip_folder = (os.environ['WIP_DIR'])
+	subprocess.Popen(['xdg-open', wip_folder])
+statusbar4= tk.Label(window, bd=1, relief=tk.SUNKEN, \
+	anchor=tk.S,text='Output Dir:  '+str(wip_folder))
+statusbar4.pack(side=tk.BOTTOM, fill=tk.X)
+statusbar4.bind("<Button-1>", clickWipFolder)
+
+window.iconphoto(False, tk.PhotoImage(file='./assets/Wordstar.png'))
 
 window.mainloop()

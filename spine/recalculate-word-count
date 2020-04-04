@@ -1,0 +1,2 @@
+#!/bin/bash
+libreoffice --invisible --headless --norestore *.odt macro:///Standard.Module1.Recalculate

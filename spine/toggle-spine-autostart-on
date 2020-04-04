@@ -1,0 +1,11 @@
+#!/bin/bash
+spine_autoload_enable() {
+if [[ -x $SPINE_DIR/autostart-spine ]]; then
+	echo "Wordstar Linux - SPINE will already autostart upon boot."
+else
+	chmod 500 $SPINE_DIR/autostart-spine \
+	&& echo "Wordstar Linux - SPINE will now autostart upon boot."
+fi
+}
+
+spine_autoload_enable

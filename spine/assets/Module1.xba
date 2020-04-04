@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
+<script:module xmlns:script="http://openoffice.org/2000/script" script:name="Module1" script:language="StarBasic">REM  *****  BASIC  *****
+
+Sub Recalculate()
+   &apos;ThisComponent.calculateAll()  &apos; Not needed
+   ThisComponent.store()
+   ThisComponent.close(True)
+   dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
+   dispatcher.executeDispatch(StarDesktop, &quot;.uno:Quit&quot;, &quot;&quot;, 0, Array())
+End Sub
+</script:module>

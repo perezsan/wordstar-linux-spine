@@ -1,6 +1,7 @@
 #!/bin/bash
 echo Press ENTER to install Sublime Text \
-&& read && echo "--== [ You may be asked for $USER 's password to install--not root! }==-" \
-&& pamac update --no-confirm \
+&& read && echo "--== [ You may be asked for $USER 's password a few times to update cache, then install Sublime Text 3 Nightly. }==-" \
+&& source $SPINE_DIR/reticulation/gen_wordsmith_profile \
+&& pamac update \
 && pamac build sublime-text-nightly --no-confirm \
-&& cat $SPINE_DIR/reticulation/dconf-gnome-favorites.ini | dconf load /org/gnome/shell/
+&& cat $ASSET_DIR/dconf-gnome-favorites.ini | dconf load /org/gnome/shell/

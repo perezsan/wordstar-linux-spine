@@ -1,9 +1,22 @@
 #!/bin/bash
+SCRIPTNAME=".tmp.start.gen.wordsmith.project"
+clear_tmp() {
+	if ls $HOME/$SCRIPTNAME 1> /dev/null 2>&1; then
+                echo "removing dangiling .tmp file ... something didn't finsh executing, perhaps?"
+                rm $HOME/$SCRIPTNAME
+        else
+            	echo "No old tmp files hanging about ..."
+        fi
+}
+
+clear_tmp
 cd $SPINE_DIR
-cat $SPINE_DIR/reticulation/gen_wordsmith_profile >> $SPINE_DIR/.tmp.start.gen.wordsmith.project \
-&& cat $SPINE_DIR/reticulation/gen_wordsmith_bootstrap >> $SPINE_DIR/.tmp.start.gen.wordsmith.project \
-&& chmod 755 $SPINE_DIR/.tmp.start.gen.wordsmith.project \
-&& $SPINE_DIR/.tmp.start.gen.wordsmith.project \
-&& rm $SPINE_DIR/.tmp.start.gen.wordsmith.project
+cat $SPINE_DIR/reticulation/gen_wordsmith_profile >> $SPINE_DIR/$SCRIPTNAME \
+&& cat $SPINE_DIR/reticulation/gen_wordsmith_bootstrap >> $SPINE_DIR/$SCRIPTNAME \
+&& cat $SPINE_DIR/reticulation/change-odt-meta-title >> $SPINE_DIR/$SCRIPTNAME \
+&& chmod 755 $SPINE_DIR/$SCRIPTNAME \
+&& $SPINE_DIR/$SCRIPTNAME \
+&& rm $SPINE_DIR/$SCRIPTNAME; \
+clear_tmp
 
 exit 0

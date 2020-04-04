@@ -1,0 +1,8 @@
+#!/bin/bash
+
+source $SPINE_DIR/reticulation/gen_wordsmith_profile
+if zenity --question --text "Delete WIPs for $TITLE$VERSION?" || exit
+then
+	echo "-==[ Deleting WIPs for $TITLE$VERSION ]==-"
+	rm -rf $SYNC_ROOT/WIPs/$MANUSCRIPT
+fi

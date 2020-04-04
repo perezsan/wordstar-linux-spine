@@ -11,11 +11,11 @@ sed -i.bak "s/DOS_DIR=.*/DOS_DIR=$DOS_DIR/g" $SPINE_DIR/reticulation/gen_wordsmi
 && sed -i.bak 's,TITLE_DIR=.*,TITLE_DIR=\"'"$TITLE_DIR_NEW"'\",' "$SPINE_DIR/reticulation/gen_wordsmith_profile" \
 && $SPINE_DIR/reticulation/close-subl-check \
 rm "$HOME/.config/sublime-text-3/Local/Session.sublime_session"; \
-cp "$SPINE_DIR/reticulation/Session.sublime_session" "$HOME/.config/sublime-text-3/Local" \
+cp "$ASSET_DIR/Session.sublime_session" "$HOME/.config/sublime-text-3/Local" \
 && source "$SPINE_DIR/reticulation/gen_wordsmith_profile"; \
-sed -i.bak 's,path.*,path\"\: \"'"$SYNC_ROOT/$FORMAT/$TITLE_DIR_NEW$VERSION"'\",' "$HOME/.config/sublime-text-3/Local/Session.sublime_session" \
-&& sed -i.bak 's,expanded".*,'"$SYNC_ROOT/$FORMAT/$TITLE_DIR_NEW$VERSION"'\",' "$HOME/.config/sublime-text-3/Local/Session.sublime_session" \
-&& sed -i.bak 's/title:.*/title:    '"$TITLE"'/g' "$SYNC_ROOT/$FORMAT/$TITLE_DIR_NEW$VERSION/.wordsmith"; \
+sed -i.bak 's,path.*,path\"\: \"'"$MANU_DIR"'\"\}\,\{ \"path\"\:\ \"'"$WIP_DIR"'\",' "$HOME/.config/sublime-text-3/Local/Session.sublime_session" \
+&& sed -i.bak 's,expanded".*,'"$MANU_DIR"'\"\,\"'"$WIP_DIR"'\",' "$HOME/.config/sublime-text-3/Local/Session.sublime_session"; \
+sed -i.bak 's/title:.*/title:    '"$TITLE"'/g' "$SYNC_ROOT/$FORMAT/$TITLE_DIR_NEW$VERSION/.wordsmith"; \
 start-gen-wordsmith-project \
 && $SPINE_DIR/reticulation/reopen-subl-check \
 

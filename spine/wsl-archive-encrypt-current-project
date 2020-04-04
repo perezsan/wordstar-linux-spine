@@ -1,0 +1,10 @@
+#!/bin/bash
+# Encrypt Project archive
+DATE=$(date +%F)
+
+source $SPINE_DIR/reticulation/gen_wordsmith_profile
+echo "-==[ Archiving Then Encrypting Project Folder ]==-"
+tar -czv \
+-C $MANU_DIR ../$TITLE_DIR$VERSION \
+-C $CLOUD_DIR/DOS/WS/WIPS $DOS_DIR \
+| gpg2 -c -o $ARCHIVE_DIR/$TITLE_DIR$VERSION/$TITLE_DIR$VERSION-$DATE.tar.gz.gpg

@@ -1,10 +1,11 @@
 #!/bin/bash
 echo Press ENTER to install Installing Pomodoro Timer \
-&& read && echo "--== [ You may be asked for $USER 's password to install--not root! }==-" \
-&& pamac update --no-confirm \
+&& read && echo "--== [ You may be asked for $USER 's password to update cache, then install Gnome Pomodoro. }==-" \
+&& source $SPINE_DIR/reticulation/gen_wordsmith_profile \
+&& pamac update \
 && pamac build gnome-shell-pomodoro --no-confirm \
-&& cat $SPINE_DIR/reticulation/dconf-pomodoro.ini | dconf load /org/gnome/pomodoro/ \
-&& cat $SPINE_DIR/reticulation/dconf-gnome-favorites.ini | dconf load /org/gnome/shell/
+&& cat $ASSET_DIR/dconf-pomodoro.ini | dconf load /org/gnome/pomodoro/ \
+&& cat $ASSET_DIR/dconf-gnome-favorites.ini | dconf load /org/gnome/shell/
 
 #&& pamac build i3ipc-python-git --no-confirm \
 #&& pamac build i3-gnome-pomodoro-git --no-confirm \

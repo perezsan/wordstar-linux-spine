@@ -1,4 +1,5 @@
 #!/bin/bash
+xdg_session_get="$(echo $XDG_SESSION_DESKTOP | tr '[:upper:]' '[:lower:]')"
 xreader_or_evince() {
 	if hash xreader 2>/dev/null ; then
 		xreader -f "${MANU_DIR}/${DOS_DIR}-outline.pdf"
@@ -8,8 +9,8 @@ xreader_or_evince() {
 	fi
 }
 
-i3status_check() {
-	if pgrep i3status &>/dev/null ; then
+i3_check() {
+	if [ $xdg_session_get = "i3" ] ; then
 		i3-msg workspace 2|zathura --mode fullscreen "${MANU_DIR}/${DOS_DIR}-outline.pdf"
 	else
 		echo "i3 not loaded ... moving on"
@@ -41,14 +42,14 @@ plasma_check() {
 }
 
 gnome_check() {
-        if pgrep -l "gsd-keyboard" &>/dev/null ; then
+        if [ $xdg_session_get = "gnome" ] ; then
                 zathura --mode fullscreen "${MANU_DIR}/${DOS_DIR}-outline.pdf"
         else
             	echo "Gnome 3 Desktop not loaded... trying next desktop environment."
         fi
 }
 
-i3status_check
 gnome_check
+i3_check
 plasma_check
 tde_check

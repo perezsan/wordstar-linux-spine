@@ -1,0 +1,9 @@
+#!/bin/bash
+# Encrypt WIPs Archive
+DATE=$(date +%F)
+
+source $SPINE_DIR/reticulation/gen_wordsmith_profile
+echo "-==[ Archiving Then Encrypting WIP Folder ]==-"
+tar -czv \
+-C $WIP_DIR ../$TITLE_DIR$VERSION \
+| gpg2 -c -o $ARCHIVE_DIR/$TITLE_DIR$VERSION/$TITLE_DIR$VERSION-WIPs-$DATE.tar.gz.gpg

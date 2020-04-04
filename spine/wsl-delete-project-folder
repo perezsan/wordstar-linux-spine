@@ -1,0 +1,8 @@
+#!/bin/bash
+
+source $SPINE_DIR/reticulation/gen_wordsmith_profile
+if zenity --question --text "Delete Project $TITLE$VERSION?" || exit
+then
+	echo "-==[ Deleting $TITLE$VERSION ]==-"
+	rm -rf $MANU_DIR
+fi

@@ -1,0 +1,9 @@
+#!/bin/bash
+echo "-== [ Cloud Dir i.e. where is your cloud service directory like Resilio or Syncthing ] ==-" \
+&& echo "$CLOUD_DIR_NEW" | sed 's/ /\\ /g' \
+&& echo "$CLOUD_DIR_NEW" \
+&& sed -i.bak 's,CLOUD_DIR=.*,CLOUD_DIR=\"'"$CLOUD_DIR_NEW"'\",' "$SPINE_DIR/reticulation/gen_wordsmith_profile"; \
+source $SPINE_DIR/reticulation/gen_wordsmith_profile \
+&& mkdir -p $SYNC_ROOT/$FORMAT \
+&& mkdir -p $WIP_ROOT \
+exit 0

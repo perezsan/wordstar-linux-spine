@@ -1,10 +1,33 @@
 #!/bin/bash
+pymodules=(
+    envbash
+)
+
+pymodules_check() {
+        if ls /livefs-pkgs.txt 1> /dev/null 2>&1; then
+                echo livefs is loaded ... aborting. Install Wordstar Linux to Hard Drive first.
+        else
+
+for module in "${pymodules[@]}"; do
+    if python3 -c "import pkgutil; exit(1 if pkgutil.find_loader(\"$module\") else 0)"; then
+        pip3 install --user "$module"
+	else 
+echo "Python 3 modules already installed... loading SPINE"
+    fi
+done
+fi
+}
+
 spine_check() {
         if ls /livefs-pkgs.txt 1> /dev/null 2>&1; then
                 echo livefs is loaded ... aborting. Install Wordstar Linux to Hard Drive first.
         else
-                $SPINE_DIR/spine.py
+		cd $SPINE_DIR \
+		&& spine.py
         fi
 }
 
-spine_check
+until pymodules_check && spine_check
+do
+   sleep 15
+done

@@ -1,12 +1,5 @@
 
 ## Cheat sheet - BEGINNERS GUIDE
-<!-- PRO TIP: Remap Caps Lock to Left Control by INSTALLING
-    SharpKeys TO REALLY PLAY WITH POWER.
-    https://github.com/randyrants/sharpkeys -->
-<!-- LAST PRO TIP: For all you night owls, 
-    USE Sublime Text 3 w/ f.lux to make
-    writing/editing viewing even more easy one the eyes.
-    https://justgetflux.com  -->
 <!-- Hold CONTROL TO RIDE THE SNAKE -->
             __LEFT HAND NAVIGATION__
                         ^                       r *[Scroll Up One Page]*

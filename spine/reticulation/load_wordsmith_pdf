@@ -1,53 +1,37 @@
 #!/bin/bash
+xdg_session_get="$(echo $XDG_SESSION_DESKTOP | tr '[:upper:]' '[:lower:]')"
+LOAD_PDF="${SYNC_ROOT}/WIPs/${MANUSCRIPT}/pdfs/${TITLE}-${DATE}.pdf"
+
 xreader_or_evince() {
-	if hash xreader 2>/dev/null ; then
-		xreader -f "${SYNC_ROOT}/WIPs/${MANUSCRIPT}/pdfs/${TITLE}-${DATE}.pdf"
+	if ! hash zathura ;
+	then
+		xreader -f "$LOAD_PDF" || evince -f "$LOAD_PDF"
 	else
-		evince -f "${SYNC_ROOT}/WIPs/${MANUSCRIPT}/pdfs/${TITLE}-${DATE}.pdf"
+		echo ""
 	fi
 }
 
-i3_check() {
-	if [ $DESKTOP_SESSION = "i3" ] ; then
-		i3-msg workspace 2|zathura --mode fullscreen "${SYNC_ROOT}/WIPs/${MANUSCRIPT}/pdfs/${TITLE}-${DATE}.pdf"
+
+i3_master_race_check() {
+	if [[ "$xdg_session_get" == "i3" ]] ;
+	then
+		i3-msg workspace 2|zathura --mode fullscreen \
+		"$LOAD_PDF"
 	else
-		echo "i3 not loaded ... moving on"
+		zathura --mode fullscreen "$LOAD_PDF"
 	fi
 }
 
-pdfopen() {
-	if hash zathura 2>/dev/null ; then
-		zathura --mode fullscreen "${SYNC_ROOT}/WIPs/${MANUSCRIPT}/pdfs/${TITLE}-${DATE}.pdf"
-	else
-		xreader_or_evince
-	fi
-}
 
-tde_check() {
-	if pgrep kicker &>/dev/null ; then
-		kstart --desktop 2 zathura --mode fullscreen "${SYNC_ROOT}/WIPs/${MANUSCRIPT}/pdfs/${TITLE}-${DATE}.pdf"
-	else
-		echo "Trinity Desktop not loaded... trying next desktop environment."
-	fi
-}
 
-plasma_check() {
-        if pgrep plasmashell &>/dev/null ; then
-                zathura --mode fullscreen "${SYNC_ROOT}/WIPs/${MANUSCRIPT}/pdfs/${TITLE}-${DATE}.pdf"
-        else
-                echo "Plasma Desktop not loaded... trying next desktop environment."
-        fi
-}
+i3_master_race_check
 
-gnome_check() {
-        if [ $DESKTOP_SESSION = "gnome" ] ; then
-                zathura --mode fullscreen "${SYNC_ROOT}/WIPs/${MANUSCRIPT}/pdfs/${TITLE}-${DATE}.pdf"
-        else
-            	echo "Gnome 3 Desktop not loaded... trying next desktop environment."
-        fi
-}
+xreader_or_evince
 
-gnome_check
-i3_check
-#plasma_check
-#tde_check
+#xreader_or_evince
+# obscure_wm_check(){
+# 	if pgrep kicker &>/dev/null || exit
+# 		then
+# 			kstart --desktop 2 zathura --mode fullscreen \
+# 			"$LOAD_PDF"
+

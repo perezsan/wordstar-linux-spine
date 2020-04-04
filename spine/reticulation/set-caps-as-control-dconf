@@ -1,6 +1,7 @@
 #!/bin/bash
-cat $SPINE_DIR/reticulation/dconf-caps_as_control.ini \
+source $SPINE_DIR/reticulation/gen_wordsmith_profile \
+&& cat $ASSET_DIR/dconf-caps_as_control.ini \
 | dconf load /org/gnome/desktop/input-sources/ \
-&& cat $SPINE_DIR/reticulation/dconf-wordstar-background.ini \
+&& cat $ASSET_DIR/dconf-wordstar-background.ini \
 | dconf load /org/gnome/desktop/background/ \
 && rm /home/$USER/.config/autostart/initial-config.desktop

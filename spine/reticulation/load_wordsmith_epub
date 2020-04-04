@@ -1,37 +1,24 @@
 #!/bin/bash
-i3status_check() {
-	if pgrep i3status &>/dev/null ; then
-		i3-msg workspace 3|calibre "${SYNC_ROOT}/WIPs/${MANUSCRIPT}/epub/${TITLE}-${DATE}.epub"
-	else
-		echo "i3 not loaded ... moving on"
-	fi
-}
+xdg_session_get="$(echo $XDG_SESSION_DESKTOP | tr '[:upper:]' '[:lower:]')"
+LOAD_EPUB="$SYNC_ROOT/WIPs/$MANUSCRIPT/epub/$TITLE-$DATE.epub"
 
-tde_check() {
-	if pgrep kicker &>/dev/null ; then
-		kstart --desktop 3 calibre "${SYNC_ROOT}/WIPs/${MANUSCRIPT}/epub/${TITLE}-${DATE}.epub"
-	else
-		echo "Trinity Desktop not loaded... trying next desktop environment. What are you running. Please tell ja.norseman@pm.me"
-	fi
-}
-
-plasma_check() {
-        if pgrep plasmashell &>/dev/null ; then
- 		calibre "${SYNC_ROOT}/WIPs/${MANUSCRIPT}/epub/${TITLE}-${DATE}.epub"
+calibre_loaded_check() {
+        if ! pgrep calibre ;
+        then
+		xdg-open $SYNC_ROOT/WIPs/$MANUSCRIPT/epub
         else
-                echo "Plasma Desktop not loaded... trying next desktop environment."
+		echo "fix me ... nothing opened. Chek $SYNC_ROOT/WIPs/$MANUSCRIPTS/epub for output. Or, ya know, just get back to fucking writing."
+fi
+}
+
+gnome_master_race_check() {
+        if [[ "$xdg_session_get" == "gnome" ]] ;
+        then
+		calibre \
+		"$LOAD_EPUB"
         fi
 }
 
-gnome_check() {
-        if pgrep -l "gsd-keyboard" &>/dev/null ; then
- 		calibre "${SYNC_ROOT}/WIPs/${MANUSCRIPT}/epub/${TITLE}-${DATE}.epub"
-        else
-            	echo "Gnome 3 Desktop not loaded... trying next desktop environment."
-        fi
-}
 
-gnome_check
-i3status_check
-#plasma_check
-#tde_check
+gnome_master_race_check || calibre_loaded_check
+

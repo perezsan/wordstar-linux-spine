@@ -23,7 +23,7 @@ GITUSERNAME="Jason Ramone"
 # or have abandonned Resilio altogether ...?
 MANUSCRIPT="$TITLE_DIR$VERSION"
 
-CLOUD_DIR="/home/lain/opo"
+CLOUD_DIR="/home/lain/lobby"
 PROJECT_ROOT="manuscripts"
 SYNC_ROOT="$CLOUD_DIR/$PROJECT_ROOT"
 ASSET_DIR="$SPINE_DIR/assets"

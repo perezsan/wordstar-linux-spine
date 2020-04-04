@@ -1,0 +1,11 @@
+#!/bin/bash
+spine_autoload_disable() {
+if [[ -x $SPINE_DIR/autostart-spine ]]; then
+	chmod 000 $SPINE_DIR/autostart-spine \
+	&& echo "Disabling Autobooting of WORDSTAR LINUX - SPINE"
+else
+	echo "WORDSTAR LINUX - SPINE: Autoboot already disabled to  when Gnome 3 starts."
+fi
+}
+
+spine_autoload_disable
