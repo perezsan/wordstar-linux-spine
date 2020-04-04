@@ -1,5 +1,5 @@
 # wordstar-linux-spine
-Wordstar Linux's Manjaro Linux aims to be a modular frontend and group of scripts that integrates Sublime Text 3 Install, 
+Wordstar Linux's *Spine* aims to be a modular frontend and group of scripts that integrates Sublime Text 3 Install, 
 Sublime Text's frontend (i.e. its build system or acces to bash scripts via keyboard shortcuts), along with wordsmith / pandoc ebook/pdf generation.
 Possibly some other crap not mentioned, too, and most likely broken in some part (needs testing!)
 
