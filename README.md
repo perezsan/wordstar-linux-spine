@@ -7,7 +7,7 @@ Possibly some other crap not mentioned, too!
 
 **and Ruby / rubygem**
 
-**[Wordsmith](https://github.com/perezsan/wordsmith)
+**[Wordsmith](https://github.com/perezsan/wordsmith)**
 
 **And a Sublime Text 3 **
 
