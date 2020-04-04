@@ -13,7 +13,7 @@ Possibly some other crap not mentioned, too, and most likely broken in some part
 
 **(optional)** xmlstarlet for reference.odt title updating
 
-clone project, chmod 700 install-spine.sh, then run ./install-spine.sh. Move spine dir wherever you like (I recommend ~/.config/spine), and add its location to your $PATH like this in ~/.profile, ~/.bashrc, and most positively, ~/.bash_profile :
+clone project, chmod 500 install-spine.sh, then run ./install-spine.sh. Move spine dir wherever you like (I recommend ~/.config/spine), and add its location to your $PATH like this in ~/.profile, ~/.bashrc, and most positively, ~/.bash_profile :
 
 **export SPINE_DIR="$HOME/.config/spine"**
 
