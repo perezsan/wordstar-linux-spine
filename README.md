@@ -15,8 +15,9 @@ Possibly some other crap not mentioned, too!
 
 clone project, chmod 700 install-spine.sh, then run ./install-spine.sh. Move spine dir wherever you like (I recommend ~/.config/spine), and add its location to your $PATH like this in ~/.profile, ~/.bashrc, and most positively, ~/.bash_profile :
 
-**export SPINE_DIR="$HOME/.config/spine"
-export PATH="$PATH:$SPINE_DIR"**
+**export SPINE_DIR="$HOME/.config/spine"**
+
+**export PATH="$PATH:$SPINE_DIR"**
 
 then run start-spine (you may need to log out of your desktop enviroment, and relog for settings to fully take affect
 
