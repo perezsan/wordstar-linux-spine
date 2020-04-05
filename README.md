@@ -24,9 +24,9 @@ Sublime Text's frontend (i.e. its build system or acces to bash scripts via keyb
 
 ______________________________
 
-1. Run ./install-spine.sh.
+1. Run ./install-spine.sh. This should copy the spine dir to ~/.config/spine and add SPINE_DIR to PATH and as a var in ~/.profile, ~/.bashrc, and ~/.bash_profile. It should also fetch a copy of perezsan/wordsmith from git, then rake that bitch up in to a working bin for either rvm installs or run-of-the-mill rubygem setups.
 
-2. Then run start-spine (you may need to log out of your desktop enviroment, and relog for settings to fully take affect
+2. Start-spine (you may need to log out of your desktop enviroment, and relog for settings to fully take affect
 
 These set of scripts can be easily modified to work on any distro and/or desktop enviroment (or even lack thereof.)
 Perhaps the goal will be to set it up as such, as these will probably only work under **Manjaro Linux 19.02**, or even Arch variants.
