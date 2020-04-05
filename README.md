@@ -5,9 +5,13 @@ Possibly some other crap not mentioned, too, and most likely broken in some part
 
 **Requires Python3 and tk (tcl/tk.)**
 
-**and Ruby / rubygem**
+**and Ruby / rubygem** / or **RVM**
 
 **[Wordsmith](https://github.com/perezsan/wordsmith)**
+
+**pandoc**
+
+**unoconv**
 
 **And a Sublime Text 3 **
 
