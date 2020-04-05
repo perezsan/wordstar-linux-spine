@@ -1,7 +1,6 @@
 # wordstar-linux-spine
-Wordstar Linux's *Spine* aims to be a modular frontend and group of scripts that integrates Sublime Text 3 Install, 
-Sublime Text's frontend (i.e. its build system or acces to bash scripts via keyboard shortcuts), along with wordsmith / pandoc ebook/pdf generation.
-Possibly some other crap not mentioned, too, and most likely broken in some part (needs testing!)
+Wordstar Linux's *Spine* aims to be a modular frontend and suite of scripts that integrates Sublime Text 3 Install, 
+Sublime Text's frontend (i.e. its build system or acces to bash scripts via keyboard shortcuts), along with wordsmith / pandoc ebook/pdf generation, and possibly some other crap not mentioned, too, and most likely broken in some part (needs testing!) because it was initially designed for a dedicated Manjaro Linux custom iso.
 
 **Requires Python3 and tk (tcl/tk.)**
 
@@ -15,7 +14,15 @@ Possibly some other crap not mentioned, too, and most likely broken in some part
 
 **And a Sublime Text 3 **
 
-**(optional)** xmlstarlet for reference.odt title updating
+**(Somewhat optional)** libreoffice ... used to recalculate word count for pdf generation -- unfortunately hard coded right now, so just install it if you're not fussy (I'll fix it later.)
+
+**(recommended)** xmlstarlet for reference.odt title updating
+
+**(recommended)** calibre ... epubs coded to auto open in either calibre or xdg-open user default (one of my scripts may set this to pcmanfm, as that is the default under Wordstar Linux Manjaro 19.02
+
+**(recommended)**  gnome pomodoro ... timer for writing ... firewall enabling is not enabled by default. user would have to have sudo and update /etc/sudoers to run firewall-on and firewall-off as root with nopasswd, then enable gnomepomodoro plugin to run scripts on play/pause/stop.
+
+______________________________
 
 1. Run ./install-spine.sh.
 
