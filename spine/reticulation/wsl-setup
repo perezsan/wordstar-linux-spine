@@ -3,13 +3,30 @@
 # probably won't work on distros other than Manjaro 19.02 with current implementation
 # especially if you're using rvm
 # fix_up ... move *.ini files to $ASSET_DIR and update all code
-source $SPINE_DIR/reticulation/gen_wordsmith_profile \
-&& gem install bundle \
-&& git clone https://github.com/perezsan/wordsmith.git \
-&& cd wordsmith \
-&& bundle install --path ~/.gem \
-&& rake build \
-&& gem install --user pkg/wordsmith-0.0.6.gem \
-&& cat $ASSET_DIR/dconf-gnome-favorites.ini | dconf load /org/gnome/shell/ \
+RVM_DIR="$HOME/.rvm/gems/default"
+source "$SPINE_DIR/reticulation/gen_wordsmith_profile"; \
+
+rvm_exist(){
+if [ -L "$RVM_DIR" ]; then
+	echo "RVM Exists...Installing Wordsmith for RVM."
+	git clone https://github.com/perezsan/wordsmith.git \
+	&& cd wordsmith \
+	&& gem install bundle \
+	&& bundle install \
+	&& rake build \
+	&& gem install pkg/wordsmith-0.0.6.gem
+else
+	echo "Installing wordsmith to ~/.gem...."
+	git clone https://github.com/perezsan/wordsmith.git \
+	&& cd wordsmith \
+	&& gem install --user bundle \
+	&& bundle install --path ~/.gem \
+	&& rake build \
+	&& gem install --user pkg/wordsmith-0.0.6.gem
+fi
+}
+
+rvm_exist
+cat $ASSET_DIR/dconf-gnome-favorites.ini | dconf load /org/gnome/shell/ \
 && xdg-mime default pcmanfm.desktop inode/directory \
 && rm $HOME/.config/autostart/initial-wordstar-setup.desktop
