@@ -12,7 +12,8 @@ wordsmith g odt \
 && cd "$MANU_DIR/final" \
 && recalculate-word-count \
 && cp "$HOME/.pandoc/meta.xml" . \
-&& zip "$MANUSCRIPT.odt" meta.xml \
+&& cp "$HOME/.pandoc/styles.xml" . \
+&& zip "$MANUSCRIPT.odt" meta.xml styles.xml \
 && cd "$MANU_DIR" \
 && wordsmith g pdf \
 && echo "Moving $MANUSCRIPT.pdf to $SYNC_ROOT/WIPs/$MANUSCRIPT/pdfs...." \

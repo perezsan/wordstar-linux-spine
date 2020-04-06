@@ -2,8 +2,13 @@
 echo "-== [ Author\'s Email ] ==-" \
 && echo "$EMAIL" | sed 's/ /\\ /g' \
 && echo "$EMAIL" \
-&& sed -i.bak 's,EMAIL=.*,EMAIL=\"'"$EMAIL"'\",' "$SPINE_DIR/reticulation/gen_wordsmith_profile"
-
+&& sed -i.bak 's,EMAIL=.*,EMAIL=\"'"$EMAIL"'\",' "$SPINE_DIR/reticulation/gen_wordsmith_profile" \
+&& cp $SPINE_DIR/assets/styles.xml $HOME/.pandoc \
+&& sed -i.bak 's,Email1,'"$EMAIL"',g' $HOME/.pandoc/styles.xml \
+&& source $SPINE_DIR/reticulation/gen_wordsmith_profile \
+&& sed -i.bak 's,Author,'"$AUTHOR"',g' $HOME/.pandoc/styles.xml \
+&& LASTNAME=$(echo "$AUTHOR" | sed 's/.* //g') \
+&& sed -i.bak 's,Lastname,'"$LASTNAME"',g' $HOME/.pandoc/styles.xml
 
 
 exit 0

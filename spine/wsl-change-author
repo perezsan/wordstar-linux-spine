@@ -4,9 +4,15 @@ echo "-== [ Author\'s Name ] ==-" \
 && echo "$AUTHOR" \
 && sed -i.bak 's,AUTHOR=.*,AUTHOR=\"'"$AUTHOR"'\",' "$SPINE_DIR/reticulation/gen_wordsmith_profile" \
 && sed -i.bak 's,GITUSERNAME=.*,GITUSERNAME=\"'"$AUTHOR"'\",' "$SPINE_DIR/reticulation/gen_wordsmith_profile" \
+&& cp $SPINE_DIR/assets/styles.xml $HOME/.pandoc \
+&& sed -i.bak 's,Author,'"$AUTHOR"',g' $HOME/.pandoc/styles.xml \
 && source $SPINE_DIR/reticulation/gen_wordsmith_profile \
 && echo $MANU_DIR \
 && sed -i.bak 's,author.*,author: '"$AUTHOR"',' "$MANU_DIR/.wordsmith" \
+&& sed -i.bak 's,Email1,'"$EMAIL"',g' $HOME/.pandoc/styles.xml \
+&& LASTNAME=$(echo "$AUTHOR" | sed 's/.* //g') \
+&& sed -i.bak 's,Lastname,'"$LASTNAME"',g' $HOME/.pandoc/styles.xml
+
 
 
 
