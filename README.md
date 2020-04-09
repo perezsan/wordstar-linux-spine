@@ -22,6 +22,8 @@ Sublime Text's frontend (i.e. its build system or acces to bash scripts via keyb
 
 **(recommended)**  gnome pomodoro ... timer for writing ... firewall enabling is not enabled by default. user would have to have sudo and update /etc/sudoers to run firewall-on and firewall-off as root with nopasswd, then enable gnomepomodoro plugin to run scripts on play/pause/stop.
 
+**(SIDEBAR)** A full working distro can be downloaded from here: [Wordstar Linx 19.02 Manjaro](https://healingrant.com/heaviside/wordstar-linux/)
+
 ______________________________
 
 1. Run ./install-spine.sh. This should copy the spine dir to ~/.config/spine and add SPINE_DIR to PATH and as a var in ~/.profile, ~/.bashrc, and ~/.bash_profile. It should also fetch a copy of perezsan/wordsmith from git, then rake that bitch up in to a working bin for either rvm installs or run-of-the-mill rubygem setups.
