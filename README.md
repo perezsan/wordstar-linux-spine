@@ -22,7 +22,7 @@ Sublime Text's frontend (i.e. its build system or acces to bash scripts via keyb
 
 **(recommended)**  gnome pomodoro ... timer for writing ... firewall enabling is not enabled by default. user would have to have sudo and update /etc/sudoers to run firewall-on and firewall-off as root with nopasswd, then enable gnomepomodoro plugin to run scripts on play/pause/stop.
 
-**(SIDEBAR)** A full working distro can be downloaded from here: [Wordstar Linx 19.02 Manjaro](https://healingrant.com/heaviside/wordstar-linux/)
+**(SIDEBAR)** A full working distro can be downloaded from here: [Wordstar Linux 19.02 Manjaro](https://healingrant.com/heaviside/wordstar-linux/)
 
 ______________________________
 
