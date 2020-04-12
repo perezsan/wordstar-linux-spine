@@ -12,6 +12,8 @@ Sublime Text's frontend (i.e. its build system or acces to bash scripts via keyb
 
 **unoconv**
 
+**xmlstarlet**
+
 **And a Sublime Text 3 **
 
 **(Somewhat optional)** libreoffice ... used to recalculate word count for pdf generation -- unfortunately hard coded right now, so just install it if you're not fussy (I'll fix it later.)
