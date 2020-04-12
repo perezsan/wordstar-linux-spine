@@ -1,6 +1,6 @@
 #!/bin/bash
 source ~/.bashrc; \
-cp -axr spine "$HOME/.config" \
+cp -axrf spine "$HOME/.config" \
 && ~/.config/spine/reticulation/wsl-setup;
 mkdir -p ~/.pandoc;
 if ls ~/.pandoc/reference.odt 1> /dev/null 2>&1; then
