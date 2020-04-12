@@ -4,7 +4,7 @@ Sublime Text's frontend (i.e. its build system or acces to bash scripts via keyb
 
 **Requires Python3 and tk (tcl/tk.)**
 
-**and Ruby / rubygem** / or **RVM**
+**Ruby / rubygem** / or **RVM**
 
 **[Wordsmith](https://github.com/perezsan/wordsmith)** (should auto-install when you run the install script.)
 
@@ -12,17 +12,15 @@ Sublime Text's frontend (i.e. its build system or acces to bash scripts via keyb
 
 **unoconv**
 
-**xmlstarlet**
+**xmlstarlet** ... for reference.odt title updating
 
-**And a Sublime Text 3 **
+**And a Sublime Text 3**
 
 **(Somewhat optional)** libreoffice ... used to recalculate word count for pdf generation -- unfortunately hard coded right now, so just install it if you're not fussy (I'll fix it later.)
 
-**(recommended)** xmlstarlet for reference.odt title updating
-
 **(recommended)** calibre ... epubs should auto-open in either calibre or xdg-open user default (one of my scripts may set this to pcmanfm, as that is the default under Wordstar Linux Manjaro 19.02
 
-**(recommended)**  gnome pomodoro ... timer for writing ... firewall enabling is not enabled by default. user would have to have sudo and update /etc/sudoers to run firewall-on and firewall-off as root with nopasswd, then enable gnomepomodoro plugin to run scripts on play/pause/stop.
+**(optional)**  gnome pomodoro ... timer for writing ... firewall enabling is not enabled by default. user would have to have sudo and update /etc/sudoers to run firewall-on and firewall-off as root with nopasswd, then enable gnomepomodoro plugin to run scripts on play/pause/stop.
 
 **(SIDEBAR)** A full working distro can be downloaded from here: [Wordstar Linux 19.02 Manjaro](https://healingrant.com/heaviside/wordstar-linux/)
 
