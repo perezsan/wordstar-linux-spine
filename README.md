@@ -6,7 +6,7 @@ Sublime Text's frontend (i.e. its build system or acces to bash scripts via keyb
 
 **and Ruby / rubygem** / or **RVM**
 
-**[Wordsmith](https://github.com/perezsan/wordsmith)**
+**[Wordsmith](https://github.com/perezsan/wordsmith)** (should auto-install when you run the install script.)
 
 **pandoc**
 
