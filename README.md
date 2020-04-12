@@ -39,7 +39,10 @@ These were modified from scripts I've made over the years, and thought I'd share
 various flavors of Linux concurrently (e.g. funtoo, mx linux, fedora VM) but gutted some of the references (i.e. funtoos chroot32 shit, some rvm checks) to clean up for debugging
 a community-derived buildiso from Manjaro Gnome 3, which is close to beta release. Not sure where I can host it, though. But for now, enjoy.
 
+## ** Known Issues **
+1. Changing Cloud dir requires restart for changes to take affect.
+
 ## **TODO**
 1. PDF, epub ebook generation should work out of the box, as the install script installs wordsmith from git, but everybody's setup is slightly different, I'd presume. I may have forgotten a dependancy...!
 
-2. Missing one of the most important aspect ... sumblime text keyboard config... not sure how to implement this with git. Probably just add the file to asset dir, then user will have to copy over to the proper directory manually (but if they're using Manjaro, I could script it easily.) All in good time.
+2. Missing one of the most important aspect ... sublime text keyboard config... Probably just add the keybind config file to asset dir, then user will have to copy over to the proper directory manually (but if they're using Manjaro, I could script it easily.) All in good time.
