@@ -21,7 +21,7 @@
 
 **(optional)**  gnome pomodoro ... timer for writing ... firewall enabling is not enabled by default. user would have to have sudo and update /etc/sudoers to run firewall-on and firewall-off as root with nopasswd, then enable gnomepomodoro plugin to run scripts on play/pause/stop.
 
-**(optionall)** gpg2 for manuscrupt and WIP archive encryption
+**(optional)** gpg2 for manuscrupt and WIP archive encryption
 
 **(SIDEBAR)** A full working distro can be downloaded from here: [Wordstar Linux 19.02 Manjaro](https://healingrant.com/heaviside/wordstar-linux/)
 
