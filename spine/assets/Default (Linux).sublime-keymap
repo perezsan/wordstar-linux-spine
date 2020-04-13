@@ -1,0 +1,247 @@
+[
+	{ "keys": ["ctrl+a"], "command": "move", "args": {"by": "words", "forward": false} },
+	{ "keys": ["ctrl+f"], "command": "move", "args": {"by": "word_ends", "forward": true} },
+	{ "keys": ["ctrl+shift+a"], "command": "move", "args": {"by": "words", "forward": false, "extend": true} },
+	{ "keys": ["ctrl+shift+f"], "command": "move", "args": {"by": "word_ends", "forward": true, "extend": true} },
+    { "keys": ["ctrl+j", "q"], "command": "join_lines" },
+
+	{"keys": ["ctrl+."], "command": "insert_markdown_footnote"
+    },
+	{ "keys": ["ctrl+;"], "command": "show_overlay", "args": {"overlay": "goto", "text": "@"} },
+/*J: LINE SWAPIN FUN*/
+   	{ "keys": ["ctrl+j", "e"], "command": "swap_line_up" },
+	{ "keys": ["ctrl+j", "x"], "command": "swap_line_down" },
+    { "keys": ["ctrl+j", "k"], "command": "expand_selection_to_paragraph"},
+    { "keys": ["ctrl+j", "l"], "command": "expand_selection", "args": {"to": "line"} },
+    { "keys": ["ctrl+j", "j"], "command": "find_under_expand" },
+
+/*Q: Q+Q Panel, Search */
+	{ "keys": ["ctrl+q", "f"], "command": "show_panel", "args": {"panel": "find", "reverse": false} },
+    { "keys": ["ctrl+q", "d"], "command": "find_next" },
+    { "keys": ["ctrl+q", "s"], "command": "find_prev" },
+
+/*K: MOD, INSTALL, CREATE*/
+    /*PASTE COMMANDS + REDO_OR_REPEAT*/
+	{ "keys": ["ctrl+k", "c"], "command": "clipboard_manager_copy" },
+	{ "keys": ["ctrl+k", "x"], "command": "clipboard_manager_cut" },
+	{ "keys": ["ctrl+k", "v"], "command": "clipboard_manager_paste" },
+    { "keys": ["ctrl+v"], "command": "redo_or_repeat" },
+
+	{ "keys": ["ctrl+k", "s"], "command": "save" },
+	{ "keys": ["ctrl+k", "n"], "command": "advanced_new_file_new"},
+	{ "keys": ["ctrl+k", "a"], "command": "advanced_new_file_new", "args": {"is_python": true}},
+    { "keys": ["ctrl+k", "k"], "command": "show_overlay", "args": {"overlay": "command_palette"} },
+/*L: GLOBAL NAV AND SEARCH */
+	{ "keys": ["ctrl+l", "f"], "command": "show_panel", "args": {"panel": "find_in_files"} },
+	{ "keys": ["ctrl+l", "l"], "command": "show_overlay", "args": {"overlay": "goto", "show_files": true} },
+	{ "keys": ["ctrl+l", "d"], "command": "next_view" },
+	{ "keys": ["ctrl+l", "s"], "command": "prev_view" },
+	{ "keys": ["ctrl+j", "v"], "command": "clipboard_manager_choose_and_paste" },
+	{ "keys": ["ctrl+j", "c"], "command": "clipboard_manager_copy_to_register"},
+	{ "keys": ["ctrl+r"], "command": "move", "args": {"by": "pages", "forward": false} },
+	{ "keys": ["ctrl+c"], "command": "move", "args": {"by": "pages", "forward": true} },
+	{ "keys": ["shift+pageup"], "command": "move", "args": {"by": "pages", "forward": false, "extend": true} },
+	{ "keys": ["shift+pagedown"], "command": "move", "args": {"by": "pages", "forward": true, "extend": true} },
+
+
+	{ "keys": ["left"], "command": "toggle_side_bar" },
+	{ "keys": ["right"], "command": "clipboard_manager_show_registers" },
+	{ "keys": ["ctrl+l", "d"], "command": "next_view" },
+	{ "keys": ["ctrl+l", "s"], "command": "prev_view" },
+
+	{ "keys": ["down"], "command": "toggle_full_screen" },
+	{ "keys": ["ctrl+tab"], "command": "toggle_distraction_free" },
+	{ "keys": ["up"], "command": "toggle_distraction_free" },
+
+	{ "keys": ["ctrl+l", "enter"], "command": "run_macro_file", "args": {"file": "res://Packages/Default/Add Line.sublime-macro"} },
+
+
+	{ "keys": ["tab"], "command": "hide_panel", "args": {"cancel": true},
+		"context":
+		[
+			{ "key": "panel_visible", "operator": "equal", "operand": true }
+		]
+	},
+
+	{ "keys": ["tab"], "command": "single_selection", "context":
+		[
+			{ "key": "num_selections", "operator": "not_equal", "operand": 1 }
+		]
+	},
+	{ "keys": ["tab"], "command": "clear_fields", "context":
+		[
+			{ "key": "has_next_field", "operator": "equal", "operand": true }
+		]
+	},
+	{ "keys": ["tab"], "command": "clear_fields", "context":
+		[
+			{ "key": "has_prev_field", "operator": "equal", "operand": true }
+		]
+	},
+	{ "keys": ["tab"], "command": "hide_overlay", "context":
+		[
+			{ "key": "overlay_visible", "operator": "equal", "operand": true }
+		]
+	},
+	{ "keys": ["tab"], "command": "hide_popup", "context":
+		[
+			{ "key": "popup_visible", "operator": "equal", "operand": true }
+		]
+	},
+	{ "keys": ["tab"], "command": "hide_auto_complete", "context":
+		[
+			{ "key": "auto_complete_visible", "operator": "equal", "operand": true }
+		]
+	},
+	{ "keys": ["ctrl+s"], "command": "move", "args": {"by": "characters", "forward": false} },
+	{ "keys": ["ctrl+d"], "command": "move", "args": {"by": "characters", "forward": true} },
+	{ "keys": ["ctrl+e"], "command": "move", "args": {"by": "lines", "forward": false} },
+	{ "keys": ["ctrl+x"], "command": "move", "args": {"by": "lines", "forward": true} },
+	{ "keys": ["ctrl+2"], "command": "move", "args": {"by": "characters", "forward": false, "extend": true} },
+	{ "keys": ["ctrl+3"], "command": "move", "args": {"by": "characters", "forward": true, "extend": true} },
+	{ "keys": ["ctrl+1"], "command": "move", "args": {"by": "lines", "forward": false, "extend": true} },
+	{ "keys": ["ctrl+4"], "command": "move", "args": {"by": "lines", "forward": true, "extend": true} },
+
+
+	{ "keys": ["ctrl+o"], "command": "null" },
+	{ "keys": ["ctrl+p"], "command": "null" },
+
+/* BOLD AND ITALICS FUCKERY */
+// Bold on Clrl + B
+    { "keys": ["ctrl+b"], "command": "run_macro_file", "args": {"file": "Packages/MarkdownEditing/macros/Transform Word - Bold.sublime-macro"}, "context":
+        [
+            { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+            { "key": "selector", "operator": "equal", "operand": "text.html.markdown", "match_all": true }
+        ]
+    },
+    { "keys": ["ctrl+b"], "command": "insert_snippet", "args": {"contents": "${MD_BOLD_MARKER}$1${MD_BOLD_MARKER}"}, "context":
+     [
+         { "key": "setting.auto_match_enabled", "operator": "equal", "operand": true },
+         { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+         { "key": "following_text", "operator": "regex_contains", "operand": "^(?:\t| |\\)|]|\\}|$)", "match_all": true },
+         { "key": "preceding_text", "operator": "not_regex_contains", "operand": "['a-zA-Z0-9_]$", "match_all": true },
+         { "key": "eol_selector", "operator": "not_equal", "operand": "string.quoted.single", "match_all": true },
+         { "key": "selector", "operator": "equal", "operand": "text.html.markdown", "match_all": true }
+     ]
+    },
+    { "keys": ["ctrl+b"], "command": "insert_snippet", "args": {"contents": "${MD_BOLD_MARKER}${SELECTION/(^[\\*_]*|[\\*_]*$)//g}${MD_BOLD_MARKER}"}, "context":
+        [
+            { "key": "setting.auto_match_enabled", "operator": "equal", "operand": true },
+            { "key": "selection_empty", "operator": "equal", "operand": false, "match_all": true },
+            { "key": "selector", "operator": "equal", "operand": "text.html.markdown", "match_all": true }
+        ]
+    },
+    // italics on Ctrl + I
+    { "keys": ["ctrl+i"], "command": "run_macro_file", "args": {"file": "Packages/MarkdownEditing/macros/Transform Word - Italic.sublime-macro"}, "context":
+        [
+            { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+            { "key": "selector", "operator": "equal", "operand": "text.html.markdown", "match_all": true }
+        ]
+    },
+    { "keys": ["ctrl+i"], "command": "insert_snippet", "args": {"contents": "${MD_ITALIC_MARKER}$0${MD_ITALIC_MARKER}"}, "context":
+     [
+         { "key": "setting.auto_match_enabled", "operator": "equal", "operand": true },
+         { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+         { "key": "following_text", "operator": "regex_contains", "operand": "^(?:\t| |\\)|]|\\}|$)", "match_all": true },
+         { "key": "preceding_text", "operator": "not_regex_contains", "operand": "['a-zA-Z0-9_]$", "match_all": true },
+         { "key": "eol_selector", "operator": "not_equal", "operand": "string.quoted.single", "match_all": true },
+         { "key": "selector", "operator": "equal", "operand": "text.html.markdown", "match_all": true }
+     ]
+    },
+    { "keys": ["ctrl+i"], "command": "insert_snippet", "args": {"contents": "${MD_ITALIC_MARKER}${SELECTION/(^[\\*_]*|[\\*_]*$)//g}${MD_ITALIC_MARKER}"}, "context":
+        [
+            { "key": "setting.auto_match_enabled", "operator": "equal", "operand": true },
+            { "key": "selection_empty", "operator": "equal", "operand": false, "match_all": true },
+            { "key": "selector", "operator": "equal", "operand": "text.html.markdown", "match_all": true }
+        ]
+    },
+
+    // Unbold on Ctrl + B if already bold
+    { "keys": ["ctrl+b"], "command": "insert_snippet", "args": {"contents": "${SELECTION/(^[\\*_]{2}|[\\*_]{2}$)//g}"}, "context":
+        [
+            { "key": "selection_empty", "operator": "equal", "operand": false, "match_all": true },
+            { "key": "text", "operator": "regex_match", "operand": "^[*_]{2}.*[*_]{2}$", "match_all": true },
+            { "key": "selector", "operator": "equal", "operand": "text.html.markdown", "match_all": true }
+        ]
+    },
+    { "keys": ["ctrl+b"], "command": "run_macro_file", "args": {"file": "Packages/MarkdownEditing/macros/Transform Word - Unbold Unitalicize.sublime-macro"}, "context":
+        [
+            { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+            { "key": "selector", "operator": "equal", "operand": "text.html.markdown markup.bold.markdown", "match_all": true }
+        ]
+    },
+    { "keys": ["ctrl+b"], "command": "run_macro_file", "args": {"file": "Packages/MarkdownEditing/macros/Transform Word - Unbold Unitalicize.sublime-macro"}, "context":
+        [
+            { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+            { "key": "preceding_text", "operator": "regex_contains", "operand": "\\b__+\\S+__+$", "match_all": true },
+            { "key": "selector", "operator": "equal", "operand": "text.html.markdown", "match_all": true }
+        ]
+    },
+
+    // Unitalicize on Ctrl + I if already italic
+    { "keys": ["ctrl+i"], "command": "insert_snippet", "args": {"contents": "${SELECTION/(^[\\*_]|[\\*_]$)//g}"}, "context":
+        [
+            { "key": "selection_empty", "operator": "equal", "operand": false, "match_all": true },
+            { "key": "text", "operator": "regex_match", "operand": "^[*_].*[*_]$", "match_all": true },
+            { "key": "selector", "operator": "equal", "operand": "text.html.markdown", "match_all": true }
+        ]
+    },
+    { "keys": ["ctrl+i"], "command": "run_macro_file", "args": {"file": "Packages/MarkdownEditing/macros/Transform Word - Unbold Unitalicize.sublime-macro"}, "context":
+        [
+            { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+            { "key": "selector", "operator": "equal", "operand": "text.html.markdown markup.italic.markdown", "match_all": true }
+        ]
+    },
+    { "keys": ["ctrl+i"], "command": "run_macro_file", "args": {"file": "Packages/MarkdownEditing/macros/Transform Word - Unbold Unitalicize.sublime-macro"}, "context":
+        [
+            { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+            { "key": "preceding_text", "operator": "regex_contains", "operand": "\\b_(?!_)\\S+_$", "match_all": true },
+            { "key": "selector", "operator": "equal", "operand": "text.html.markdown", "match_all": true }
+        ]
+    },
+
+	{
+        "button": "button3",
+        "press_command": "null",
+        "command": "null"
+    },
+{ "keys": ["alt+p"], "command": "exec", "args": { "shell_cmd": "start-gen-pdf" } },
+
+/* create outline for current project designated by ge_wordsmith_profile */
+
+{ "keys": ["alt+shift+p"], "command": "exec", "args": { "shell_cmd": "start-gen-outline-pdf" } },
+
+/* epub gen */
+{ "keys": ["alt+i"], "command": "exec", "args": { "shell_cmd": "start-gen-epub" } },
+
+/* Like Water shortcuts */
+{ "keys": ["alt+l"], "command": "exec", "args": { "shell_cmd": "like-water-gen.py" } },
+{ "keys": ["alt+shift+l"], "command": "exec", "args": { "shell_cmd": "like-water-yinyang.py" } },
+
+
+/* Critic Markup Shit */
+    { "keys": ["ctrl+o", "f"], "command": "list_critics" },
+    { "keys": ["ctrl+o", "a"], "command": "accept_critic" },
+    { "keys": ["ctrl+o", "d"], "command": "list_critics_comments" },
+    { "keys": ["ctrl+o", "s"], "command": "mark_critic" },
+/* toggle markdown and critic markup syntax */
+{"keys": ["ctrl+p", "o"], "command": "set_file_type",
+"args": {"syntax": "Packages/Critic Markup/Critic.tmLanguage"}
+},
+{"keys": ["ctrl+p", "p"], "command": "set_file_type",
+"args": {"syntax": "Packages/MarkdownEditing/MultiMarkdown.tmLanguage"}
+},
+/* Build SYSTEM .. BUT WHO GIVES A FUCK, I'm NOT A PROGRAMMER -- REMAPPED JIK IT INTERFERES w/ BOLD to CONTROL+B */
+	{ "keys": ["ctrl+alt+shift+b"], "command": "build" },
+	{ "keys": ["ctrl+e", "e"], "command": "null" },
+	{
+		"keys": ["tab"],
+		"command": "insert",
+		"args": {"characters": "\t"},
+		"context": [{
+			"key": "setting.anf_panel"
+		}]
+	}
+
+
+]
