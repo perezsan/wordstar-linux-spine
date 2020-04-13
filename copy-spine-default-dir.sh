@@ -9,4 +9,10 @@ else
 	cp ~/.config/spine/assets/reference.odt ~/.pandoc/ \
 	&& cp ~/.config/spine/assets/*.xml ~/.pandoc/
 fi
-
+echo "                                                              \
+                                                                    \
+-==[ Sublime Text 3 Keybindings install... Press ENTER to proceed ]==- \
+                                                  Make sure you have installed sublime text 3 first before proceeding \
+                                                  this section will overwrite any keybindings in ~/.config/sublime-text-3/Packages/User"  \
+&& read \
+&& echo ~/.config/sublime-text-3/Packages/User/ | xargs -p cp spine/assets/Default\ \(Linux\).sublime-keymap
