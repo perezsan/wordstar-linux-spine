@@ -12,7 +12,7 @@ if [ -L "$RVM_DIR" ]; then
 	git clone https://github.com/perezsan/wordsmith.git \
 	&& cd wordsmith \
 	&& source ~/.rvm/scripts/rvm \
-	&& rvm default \	
+	&& rvm default \
 	&& gem install bundle \
 	&& bundle install \
 	&& rake build \
