@@ -43,4 +43,3 @@ a community-derived buildiso from Manjaro Gnome 3, which has been released (see 
 ## **TODO**
 1. PDF, epub ebook generation should work out of the box, as the install script installs wordsmith from git, but everybody's setup is slightly different, I'd presume. I may have forgotten a dependancy...!
 
-2. Missing one of the most important aspect ... sublime text keyboard config... Probably just add the keybind config file to asset dir, then user will have to copy over to the proper directory manually (but if they're using Manjaro, I could script it easily.) All in good time.
