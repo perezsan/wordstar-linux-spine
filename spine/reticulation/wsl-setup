@@ -11,6 +11,8 @@ if [ -L "$RVM_DIR" ]; then
 	echo "RVM Exists...Installing Wordsmith for RVM."
 	git clone https://github.com/perezsan/wordsmith.git \
 	&& cd wordsmith \
+	&& source ~/.rvm/scripts/rvm \
+	&& rvm default \	
 	&& gem install bundle \
 	&& bundle install \
 	&& rake build \
