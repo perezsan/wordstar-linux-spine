@@ -1,6 +1,5 @@
 # wordstar-linux-spine
-Wordstar Linux's *Spine* aims to be a modular frontend and suite of scripts that integrates Sublime Text 3 Install, 
-Sublime Text's frontend (i.e. its build system or acces to bash scripts via keyboard shortcuts), along with wordsmith / pandoc ebook/pdf generation, and possibly some other crap not mentioned, too, and most likely broken in some part (needs testing!) because it was initially designed for a dedicated Manjaro Linux custom iso.
+*Spine* aims to be a distro agnostic frontend and suite of scripts that integrates Sublime Text 3 and its frontend (i.e. an in-app keybindings to access to bash scripts via keyboard shortcuts), along with wordsmith / pandoc ebook/pdf generation, and possibly some other crap not mentioned, too -- most likely broken in some parts (needs testing!) as it was initially designed for a dedicated Manjaro Linux custom iso.
 
 **Requires Python3 and tk (tcl/tk.)**
 
