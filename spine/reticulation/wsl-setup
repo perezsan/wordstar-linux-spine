@@ -9,6 +9,7 @@ source "$SPINE_DIR/reticulation/gen_wordsmith_profile"; \
 rvm_exist(){
 if [ -L "$RVM_DIR" ]; then
 	echo "RVM Exists...Installing Wordsmith for RVM."
+	rm -rf wordsmith; \
 	git clone https://github.com/perezsan/wordsmith.git \
 	&& cd wordsmith \
 	&& source ~/.rvm/scripts/rvm \
@@ -19,6 +20,7 @@ if [ -L "$RVM_DIR" ]; then
 	&& gem install pkg/wordsmith-0.0.6.gem
 else
 	echo "Installing wordsmith to ~/.gem...."
+	rm -rf wordsmith; \
 	git clone https://github.com/perezsan/wordsmith.git \
 	&& cd wordsmith \
 	&& gem install --user bundle \
@@ -28,7 +30,12 @@ else
 fi
 }
 
-rvm_exist
-cat $ASSET_DIR/dconf-gnome-favorites.ini | dconf load /org/gnome/shell/ \
-&& xdg-mime default pcmanfm.desktop inode/directory \
-&& rm $HOME/.config/autostart/initial-wordstar-setup.desktop
+rvm_exist \
+&& cat $ASSET_DIR/dconf-gnome-favorites.ini | dconf load /org/gnome/shell/
+
+# used for dedicated Manjaro Gnome 3 distro ...
+#plus other users may not want pcmanfm as default file manager
+#&& xdg-mime default pcmanfm.desktop inode/directory \
+
+# only needed for dedicated Manjaro Gnome 3 distro
+#&& rm $HOME/.config/autostart/initial-wordstar-setup.desktop
