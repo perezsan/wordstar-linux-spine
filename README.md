@@ -40,7 +40,6 @@ a community-derived buildiso from Manjaro Gnome 3, which has been released (see 
 
 ## ** Known Issues **
 1. Changing Cloud dir requires restart for changes to take affect.
-2. wordcount show stopper! install script does not copy over spine/assets/Module1.xba to ~/.config/libreoffice/4/user/basic/Standard/ ... please do so manually if you want proper word count on  pdf generation.
 
 ## **TODO**
 1. PDF, epub ebook generation should work out of the box, as the install script installs wordsmith from git, but everybody's setup is slightly different, I'd presume. I may have forgotten a dependancy...!
