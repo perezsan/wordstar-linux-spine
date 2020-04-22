@@ -15,4 +15,14 @@ echo "                                                              \
                                                   Make sure you have installed sublime text 3 first before proceeding \
                                                   this section will overwrite any keybindings in ~/.config/sublime-text-3/Packages/User"  \
 && read \
-&& echo ~/.config/sublime-text-3/Packages/User/ | xargs -p cp spine/assets/Default\ \(Linux\).sublime-keymap
+&& echo ~/.config/sublime-text-3/Packages/User/ | xargs -p cp spine/assets/Default\ \(Linux\).sublime-keymap;
+echo "                                                              \
+                                                                    \
+-==[ Libreoffice Macro Install.... Press ENTER to proceed ]==-      \
+                                                  Make sure you have installed Libreoffice before proceeding         \
+                                                  this section will overwrite any custom MACORS, which are usually stored in             \
+                                                  ~/.config/libreoffice/4/user/basic/Standard                        \
+                                                  If you answer N you will have to manually import the BASIC macro into Libreoffice yourself \
+                                                   ... you can find the file in the assets dir as Recalculate.bas " \
+&& read \
+&& echo ~/.config/libreoffice/4/user/basic/Standard/ | xargs -p cp spine/assets/Module1.xba
