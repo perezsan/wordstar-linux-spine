@@ -5,7 +5,7 @@
 source $SPINE_DIR/reticulation/test-connectivity \
 && echo "echo $ACTIVE_INTERFACE" > $HOME/.active.interface \
 && echo "Internet connection is at $ACTIVE_INTERFACE..." \
-&& sudo iptables -I OUTPUT -o $ACTIVE_INTERFACE -j DROP \
+&& sudo iptables -I OUTPUT -j DROP \
 && echo "Firewall enabled to block all traffic on $ACTIVE_INTERFACE. Please run firewall-off to regain connectivity on $ACTIVE_INTERFACE"
 
 
