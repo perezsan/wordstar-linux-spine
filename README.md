@@ -17,7 +17,7 @@
 
 **(Somewhat optional)** libreoffice ... used to recalculate word count for pdf generation -- unfortunately hard coded right now, so just install it if you're not fussy.
 
-**(recommended)** calibre ... epubs should auto-open in either calibre or xdg-open user default (one of my scripts may set this to pcmanfm, as that is the default under Wordstar Linux Manjaro 19.02
+**(recommended)** calibre ... epubs should auto-open in either calibre or xdg-open user default (one of my scripts may set this to pcmanfm, as that is the default under Wordstar Linux Manjaro 20.00
 
 **(optional)**  gnome pomodoro ... timer for writing ... firewall enabling is not enabled by default. user would have to have sudo and update /etc/sudoers to run firewall-on and firewall-off as root with nopasswd, then enable gnomepomodoro plugin to run scripts on play/pause/stop.
 
