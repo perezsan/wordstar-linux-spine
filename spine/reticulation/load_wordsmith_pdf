@@ -11,6 +11,11 @@ xreader_or_evince() {
 	fi
 }
 
+sway_check() {
+	swaymsg workspace 2|zathura --mode fullscreen \
+                "$LOAD_PDF"
+}
+
 
 i3_master_race_check() {
 	if [[ "$xdg_session_get" == "i3" ]] ;
@@ -18,7 +23,7 @@ i3_master_race_check() {
 		i3-msg workspace 2|zathura --mode fullscreen \
 		"$LOAD_PDF"
 	else
-		zathura --mode fullscreen "$LOAD_PDF"
+		sway_check || zathura --mode fullscreen "$LOAD_PDF"
 	fi
 }
 
