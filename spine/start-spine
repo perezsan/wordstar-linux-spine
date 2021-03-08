@@ -23,6 +23,7 @@ spine_check() {
                 echo livefs is loaded ... aborting. Install Wordstar Linux to Hard Drive first.
         else
 		cd $SPINE_DIR \
+		&& export PATH="$PATH:$HOME/.local/share/gem/ruby/2.7.0/bin" \
 		&& spine.py
         fi
 }
