@@ -19,6 +19,8 @@ clear_tmp() {
         fi
 }
 
+export PATH="$PATH:$HOME/.local/share/gem/ruby/2.7.0/bin"
+
 clear_tmp
 cd $SPINE_DIR
 cat $SPINE_DIR/reticulation/gen_wordsmith_profile >> $HOME/$SCRIPTNAME \
