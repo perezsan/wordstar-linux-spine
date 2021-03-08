@@ -14,8 +14,8 @@ if [ -L "$RVM_DIR" ]; then
 	&& cd wordsmith \
 	&& source ~/.rvm/scripts/rvm \
 	&& rvm default \
+	&& gem install bundle \
 	&& bundle install \
-	&& gem install bundler \
 	&& rake build \
 	&& gem install pkg/wordsmith-0.0.6.gem
 else
@@ -23,8 +23,8 @@ else
 	rm -rf wordsmith; \
 	git clone https://github.com/perezsan/wordsmith.git \
 	&& cd wordsmith \
+	&& gem install bundle \
 	&& bundle install --path ~/.local/share/gem \
-	&& gem install --user bundler \	
 	&& rake build \
 	&& gem install --user pkg/wordsmith-0.0.6.gem
 fi
