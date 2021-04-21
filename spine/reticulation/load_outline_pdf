@@ -10,7 +10,7 @@ xreader_or_evince() {
 }
 
 i3_check() {
-	if [ $xdg_session_get = "i3" ] ; then
+	if [[ $xdg_session_get = "i3" ]] ; then
 		i3-msg workspace 2|zathura --mode fullscreen "${MANU_DIR}/${DOS_DIR}-outline.pdf"
 	else
 		echo "i3 not loaded ... moving on"
