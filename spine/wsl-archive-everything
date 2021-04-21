@@ -1,4 +1,4 @@
 #!/bin/bash
 source $SPINE_DIR/reticulation/gen_wordsmith_profile
 echo "-==[ Archiving Project Folders ]==-"
-tar -czvf $ARCHIVE_DIR/Everything-$DATE.tar.gz -C $MANU_DIR ../
+tar -czvf $ARCHIVE_DIR/Everything-$DATE.tar.gz -C $CLOUD_DIR manuscripts/Novels DOS/WS/WIPS
