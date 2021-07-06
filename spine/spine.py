@@ -60,7 +60,7 @@ def SpineOff():
 
 ttk.Label(TAB1, text="Create / Modify Project Profile",\
    style="Black.Tab").grid(column=1, row=0, padx=10, pady=10, columnspan=8, sticky=tk.E+tk.W)
-ttk.Button(TAB1, text="Open Project in Sublime Text 3 . . .",\
+ttk.Button(TAB1, text="Help . . .",\
    command = openCheatSheet).grid(column=4, row=4, padx=20, pady=10, columnspan=3)
 ##################### Set Project Name #############
 ttk.Label(TAB1, text="Project Name (New or Existing)", \
