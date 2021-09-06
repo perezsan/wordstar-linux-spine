@@ -42,7 +42,7 @@ plasma_check() {
 }
 
 gnome_check() {
-        if [ $xdg_session_get = "gnome" ] ; then
+        if [[ $xdg_session_get = "gnome" ]] ; then
                 zathura --mode fullscreen "${MANU_DIR}/${DOS_DIR}-outline.pdf"
         else
             	echo "Gnome 3 Desktop not loaded... trying next desktop environment."
