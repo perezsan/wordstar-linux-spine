@@ -6,6 +6,8 @@
 TITLE="Your Manuscript"
 TITLE_DIR="Your_Manuscript"
 DOS_DIR=YOURMANU
+NOTES_DIR=$HOME/Syncthing/Notes/'iA Writer'
+NOTES_TITLE_DIR="$NOTES_DIR/$TITLE_DIR"
 
 VERSION=''
 # ^ ^ ^ ^ ^ ^ ^ ^
@@ -42,3 +44,6 @@ DATE="$(date +%F-%I%M%p)"
 ###shitty hack ... don't touch yet
 NEW_MANU_DIR="/$PROJECT_ROOT/$FORMAT/"
 
+#links iaWriter notes (or whatever Notes app you use) into WIPs dir
+$(mkdir -p "$NOTES_TITLE_DIR")
+$(ln -sf "$NOTES_TITLE_DIR" "$WIP_DIR/Notes")
